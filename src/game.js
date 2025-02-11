@@ -1,0 +1,43 @@
+
+export const games = [
+  {
+    id: 1,
+    title: "Game 1: Matching",
+    gameName: "Matching",
+    image: "./image/matching_preview.png",
+    hasPairs: true,
+    isMotionGame: false,
+    removal: false,
+    model: null,
+    pairs: [2, 3, 4, 5, 6],
+    units: [
+      { value: "p1u3-a", label: "P1U3-Game A (Listening)" },
+      { value: "p1u3-c", label: "P1U3-Game C (Picture)" },
+    ],
+    selectedPair: 2,
+    selectedUnit: "p1u3-a",
+  },
+  {
+    id: 2,
+    title: "Game 2: Motion Phonics",
+    gameName: "Phonics",
+    image: "./image/screen_mpair.jpg",
+    hasPairs: false,
+    isMotionGame: true,
+    removal: false,
+    model: true,
+    pairs: [2, 3, 4, 5, 6],
+    units: [
+      { value: "p1u3-c", label: "P1U3-Game C (Picture)" },
+      { value: "p1u4-c", label: "P1U4-Game C (Picture)" },
+      { value: "p1u5-c", label: "P1U5-Game C (Picture)" },
+      { value: "p1u6-c", label: "P1U6-Game C (Picture)" },
+      { value: "p2u3-b", label: "P2U3-Game B (Picture)" },
+      { value: "p2u4-b", label: "P2U4-Game B (Picture)" },
+      { value: "p2u5-b", label: "P2U5-Game B (Picture)" },
+      { value: "p2u6-b", label: "P2U6-Game B (Picture)" },
+    ],
+    selectedPair: null,
+    selectedUnit: "p1u3-c",
+  },
+]
