@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="game-container">
-    <div v-for="game in games" :key="game.id" class="game-card">
+    <div v-for="game in visibleGames" :key="game.id" class="game-card">
       <img :src="game.image" :alt="game.title" class="game-image" translate="no"/>
       <h1 class="game-title">{{ game.title }}</h1>
       <div v-if="game.hasPairs" class="game-controls">
@@ -11,18 +11,26 @@
         </select>
       </div>
 
-      <div v-if="game.isMotionGame" class="game-controls">
-          <h1>Virtual Background:</h1>
-          <label class="switch">
-            <input type="checkbox" v-model="game.removal">
+      <div v-if="game.gameSettings.battle" class="game-controls">
+        <h1>Battle Mode:</h1>
+        <label class="switch">
+            <input type="checkbox" v-model="game.gameSettings.battle.enabled">
             <span class="slider"></span>
           </label>
       </div>
 
-      <div v-if="game.isMotionGame" class="game-controls">
+      <div v-if="game.gameSettings.isMotionGame && game.gameSettings.removal.show" class="game-controls">
+          <h1>Virtual Background:</h1>
+          <label class="switch">
+            <input type="checkbox" v-model="game.gameSettings.removal.enabled">
+            <span class="slider"></span>
+          </label>
+      </div>
+
+      <div v-if="game.gameSettings.isMotionGame && game.gameSettings.model.show" class="game-controls">
           <h1>Detection Model:</h1>
           <label class="switch">
-            <input type="checkbox" v-model="game.model">
+            <input type="checkbox" v-model="game.gameSettings.model.enabled">
             <span class="slider"></span>
           </label>
       </div>
@@ -42,36 +50,47 @@ import { games } from '../game.js';
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
-  name: "Matching", // Component name
+  name: "Games", // Component name
   data() {
     return {
       games: games,
+      visibleGames: games.filter(game => game.show),
     };
   },
   methods: {
     playGame(game) {
-      if(game.hasPairs === true){
+      if(game.hasPairs){
         const selectedUnit = game.selectedUnit;
         const selectedPairs = game.selectedPair;
-        const baseUrl = `${import.meta.env.VITE_BASE_HEADER}/RainbowOne/webapp/2.8/gameFile/OKAGames/${game.gameName}/`;
+        const baseUrl = `${import.meta.env.VITE_BASE_HEADER}/RainbowOne/webapp/2.8/gameFile/OKAGames/${game.gameFolderName}/`;
         const newUrl = `${baseUrl}?unit=${selectedUnit}&pairs=${selectedPairs}`;
         window.open(newUrl, '_self');
       }
-      else if(game.isMotionGame){
+      else if(game.gameSettings.battle){
         const selectedUnit = game.selectedUnit;
-        const removalStatus = game.removal ? "&removal=1" : "";
-        const selectedModel = game.model ? "full" : "lite";
-        const baseUrl = `${import.meta.env.VITE_BASE_HEADER}/RainbowOne/webapp/2.8/gameFile/OKAGames/${game.gameName}/`;
+        const battleMode = game.gameSettings.battle.enabled && game.gameSettings.battle.show ? "&playerNumbers=2" : "&playerNumbers=1";
+        const baseUrl = `${import.meta.env.VITE_BASE_HEADER}/RainbowOne/webapp/2.8/gameFile/OKAGames/${game.gameFolderName}/`;
+        const newUrl = `${baseUrl}?unit=${selectedUnit}${battleMode}`;
+        window.open(newUrl, '_self');
+      }
+      else if(game.gameSettings.isMotionGame){
+        const selectedUnit = game.selectedUnit;
+        const removalStatus = game.gameSettings.removal.enabled && game.gameSettings.removal.show? "&removal=1" : "";
+        const selectedModel = game.gameSettings.model.enabled && game.gameSettings.model.show ? "full" : "lite";
+        const baseUrl = `${import.meta.env.VITE_BASE_HEADER}/RainbowOne/webapp/2.8/gameFile/OKAGames/${game.gameFolderName}/`;
         const newUrl = `${baseUrl}?unit=${selectedUnit}${removalStatus}&model=${selectedModel}`;
         window.open(newUrl, '_self');
       }
-      else {
-        const selectedUnit = game.selectedUnit;
-        const baseUrl = `${import.meta.env.VITE_BASE_HEADER}/RainbowOne/webapp/2.8/gameFile/OKAGames/${game.gameName}/`;
-        const newUrl = `${baseUrl}?unit=${selectedUnit}`;
+      else if(game.gameSettings.isOldGame){
+        const newUrl = `${import.meta.env.VITE_BASE_HEADER}${game.gameSettings.isOldGame.dirFolder}`;
         window.open(newUrl, '_self');
       }
-
+      else {
+        const selectedUnit = game.selectedUnit ? `?unit=${game.selectedUnit}` : "";
+        const baseUrl = `${import.meta.env.VITE_BASE_HEADER}/RainbowOne/webapp/2.8/gameFile/OKAGames/${game.gameFolderName}/`;
+        const newUrl = `${baseUrl}${selectedUnit}`;
+        window.open(newUrl, '_self');
+      }
     }
   }
 }
@@ -79,6 +98,7 @@ export default {
 <style scoped>
  h1{
     font-size: 1.2vw;
+    font-weight: 700;
   }
 .game-card {
     display: flex;

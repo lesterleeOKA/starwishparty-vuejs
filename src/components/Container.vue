@@ -1,5 +1,5 @@
 <script setup>
-import Matching from './GameCard.vue'
+import Games from './GameCard.vue'
 </script>
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
@@ -14,7 +14,7 @@ import Matching from './GameCard.vue'
       </div>
       <!--games-->
       <div class="game-container">
-        <Matching/>
+        <Games/>
       </div>
     </div>
   </div>
@@ -24,7 +24,7 @@ import Matching from './GameCard.vue'
 <script>
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
-  name: "Container", // Component name
+  name: "Container",
 }
 </script>
 
@@ -39,6 +39,7 @@ export default {
   top: 0%;
   right: 0%;
   overflow-y: auto;
+  overflow-x: hidden;
   z-index: 1;
   touch-action: pan-y;
  }
@@ -63,7 +64,7 @@ export default {
     font-size: 14px;
 }
 .note {
-  margin-bottom: calc(min(10vh, 10vw));
+  padding-bottom: calc(min(10vh, 10vw));
   font-size: calc(min(1.6vh, 1.6vw));
   text-align: center;
   font-family: Arial;
@@ -81,11 +82,10 @@ export default {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15vh, 22vw));
-	gap: calc(min(1.5vh, 1.5vw));
+	/*gap: calc(min(1.5vh, 1.5vw));*/
   -webkit-overflow-scrolling: auto;
-  top: calc(min(11vh, 11vw));
-  padding-left: calc(min(2.5vw, 2.5vh));
-  padding-bottom: calc(min(5vh, 5vw));
+  top: calc(min(5vh, 5vw));
+  /*padding-left: calc(min(2.5vw, 2.5vh));*/
 }
 .game-container > * {
   margin: 0 calc(min(7.5vw, 7.5vh) / 2);
