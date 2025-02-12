@@ -29,38 +29,10 @@ export default {
         elements[i].addEventListener('touchstart', this.preventZoom);
       }
       this.selectedGame = "5"; // Set default value
-    },
-    hideURLPath() {
-      const currentURL = new URL(window.location.href);
-      const baseURL = `${currentURL.protocol}//${currentURL.host}/`;
-
-      const hiddenPath = "RainbowOne/webapp/2.8/gamefile/OKAGames/";
-
-      // Check if the current URL includes the hidden path
-      if (currentURL.pathname.includes(hiddenPath)) {
-        // Store the original URL
-        const originalURL = window.location.href;
-
-        // Update the URL to the base URL
-        window.history.replaceState(null, null, baseURL);
-
-        // Set up the onbeforeunload event handler
-        window.onbeforeunload = () => {
-          // Check if the original URL is available
-          if (originalURL) {
-            // Navigate back to the original URL
-            window.location.href = originalURL;
-          }
-        };
-      } else {
-        // Remove the onbeforeunload event handler if the hidden path is not present
-        window.onbeforeunload = null;
-      }
-    },
+    }
   },
   mounted() {
     this.nodoubletapzoom(); // Call the method when the component is mounted
-    //this.hideURLPath();
   },
   beforeUnmount() {
     const elements = this.$el.querySelectorAll('.game-card .game-image');
