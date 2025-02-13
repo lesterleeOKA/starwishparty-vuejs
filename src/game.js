@@ -4,7 +4,7 @@ export const games = [
     show: true,
     title: "Game 1: Matching",
     gameFolderName: "Matching",
-    image: "./image/matching_preview.png",
+    image: "image/matching_preview.png",
     hasPairs: true,
     gameSettings: {
       isMotionGame: false,
@@ -30,7 +30,7 @@ export const games = [
     show: true,
     title: "Game 2: Motion Phonics",
     gameFolderName: "Phonics",
-    image: "./image/screen_mpair.jpg",
+    image: "image/screen_mpair.jpg",
     hasPairs: false,
     gameSettings: {
       isMotionGame: true,
@@ -62,7 +62,7 @@ export const games = [
     show: true,
     title: "Game 3: Spelling",
     gameFolderName: "Snake",
-    image: "./image/screen_snake.jpg",
+    image: "image/screen_snake.jpg",
     hasPairs: false,
     gameSettings: {
       isMotionGame: false,
@@ -98,7 +98,7 @@ export const games = [
     show: true,
     title: "Game 4: Typing",
     gameFolderName: "Typing",
-    image: "./image/screen_type.jpg",
+    image: "image/screen_type.jpg",
     hasPairs: false,
     gameSettings: {
       isMotionGame: false,
@@ -128,7 +128,7 @@ export const games = [
     show: true,
     title: "Game 5: Motion Spelling",
     gameFolderName: "MotionSpelling",
-    image: "./image/screen_mspell.jpg",
+    image: "image/screen_mspell.jpg",
     hasPairs: false,
     gameSettings: {
       isMotionGame: true,
@@ -158,7 +158,7 @@ export const games = [
     show: true,
     title: "Game 6: Fruit Ninja",
     gameFolderName: "FruitNinja",
-    image: "./image/fruit_ninja.png",
+    image: "image/fruit_ninja.png",
     hasPairs: false,
     gameSettings: {
       isMotionGame: true,
@@ -185,7 +185,7 @@ export const games = [
     show: true,
     title: "Game 7: Motion Basket",
     gameFolderName: "MotionBasket",
-    image: "./image/mBasket_preview.png",
+    image: "image/mBasket_preview.png",
     hasPairs: false,
     gameSettings: {
       isMotionGame: true,
@@ -214,7 +214,7 @@ export const games = [
     show: true,
     title: "Game 8: Head To Win",
     gameFolderName: "HeadToWin",
-    image: "./image/mhead_preview.png",
+    image: "image/mhead_preview.png",
     hasPairs: false,
     gameSettings: {
       isMotionGame: true,
@@ -243,7 +243,7 @@ export const games = [
     show: true,
     title: "Game 9: Cross The Floor",
     gameFolderName: "CrossTheFloor",
-    image: "./image/crossTheFloor_preview.png",
+    image: "image/crossTheFloor_preview.png",
     hasPairs: false,
     gameSettings: {
       battle: {
@@ -273,7 +273,7 @@ export const games = [
     show: true,
     title: "Game 10: Word Blitz",
     gameFolderName: "WordBlitz",
-    image: "./image/wordBlitz_preview.png",
+    image: "image/wordBlitz_preview.png",
     hasPairs: false,
     gameSettings: {
       battle: {
@@ -306,7 +306,7 @@ export const games = [
     show: true,
     title: "Game 11: Bouncing(Testing)",
     gameFolderName: "Bouncing",
-    image: "./image/kingOfSpin_preview.png",
+    image: "image/kingOfSpin_preview.png",
     hasPairs: false,
     gameSettings: {
       isMotionGame: false,
@@ -332,7 +332,7 @@ export const games = [
     show: true,
     title: "Game 12: Jump To Win",
     gameFolderName: "JumpToWin",
-    image: "./image/jump_to_win_preview.png",
+    image: "image/jump_to_win_preview.png",
     hasPairs: false,
     gameSettings: {
       isMotionGame: false,
@@ -363,7 +363,7 @@ export const games = [
     show: true,
     title: "Game 13: Spell Together",
     gameFolderName: "SpellTogether",
-    image: "./image/spellTogether_preview.png",
+    image: "image/spellTogether_preview.png",
     hasPairs: false,
     gameSettings: {
       isMotionGame: false,
@@ -383,12 +383,13 @@ export const games = [
     selectedPair: null,
     selectedUnit: "p1u7-h",
   },
+  //小王子系列
   {
     id: 25,
     show: true,
     title: "Starwish Game A",
     gameFolderName: "StarwishGame_a",
-    image: "./image/starwish_game_a.png",
+    image: "image/starwish_game_a.png",
     hasPairs: false,
     gameSettings: {
       isOldGame: {
@@ -416,7 +417,7 @@ export const games = [
     show: true,
     title: "Starwish Game D",
     gameFolderName: "StarwishGame_d",
-    image: "./image/starwish_game_d.png",
+    image: "image/starwish_game_d.png",
     hasPairs: false,
     gameSettings: {
       isOldGame: {
@@ -444,7 +445,7 @@ export const games = [
     show: true,
     title: "Starwish Game F",
     gameFolderName: "StarwishGame_f",
-    image: "./image/starwish_game_f.png",
+    image: "image/starwish_game_f.png",
     hasPairs: false,
     gameSettings: {
       isOldGame: {
@@ -472,7 +473,7 @@ export const games = [
     show: true,
     title: "Starwish Game G",
     gameFolderName: "StarwishGame_g",
-    image: "./image/starwish_game_g.png",
+    image: "image/starwish_game_g.png",
     hasPairs: false,
     gameSettings: {
       isOldGame: {
@@ -500,7 +501,7 @@ export const games = [
     show: true,
     title: "Starwish Game H",
     gameFolderName: "StarwishGame_h",
-    image: "./image/starwish_game_h.png",
+    image: "image/starwish_game_h.png",
     hasPairs: false,
     gameSettings: {
       isOldGame: {
@@ -528,7 +529,7 @@ export const games = [
     show: true,
     title: "Starwish Game J",
     gameFolderName: "StarwishGame_j",
-    image: "./image/starwish_game_j.png",
+    image: "image/starwish_game_j.png",
     hasPairs: false,
     gameSettings: {
       isOldGame: {

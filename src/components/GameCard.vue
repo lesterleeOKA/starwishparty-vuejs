@@ -2,8 +2,9 @@
 <template>
   <div class="game-container">
     <div v-for="game in visibleGames" :key="game.id" class="game-card">
-      <img :src="game.image" :alt="game.title" class="game-image" translate="no"/>
+      <img :src="this.currentSiteUrl.href + game.image" :alt="game.title" class="game-image" translate="no"/>
       <h1 class="game-title">{{ game.title }}</h1>
+      <!--Settings items for different games-->
       <div v-if="game.hasPairs" class="game-controls">
         <h1>Number of Cards:</h1>
         <select v-model="game.selectedPair" style="overflow-y:auto;flex: 0 0 30%;">
@@ -39,7 +40,7 @@
         <select v-model="game.selectedUnit" style="overflow-y:auto;">
           <option v-for="unit in game.units" :value="unit.value" :key="unit.value">{{ unit.label }}</option>
         </select>
-        <button @click="playGame(game)" class="play-button">Play</button>
+        <button @click="playGame(game, $event)" @touchend="playGame(game, $event)" class="play-button">Play</button>
       </div>
     </div>
   </div>
@@ -53,23 +54,33 @@ export default {
   name: "Games", // Component name
   data() {
     return {
-      games: games,
+      games: games.map(game => ({ ...game, loading: false })),
+      currentSiteUrl:new URL(window.location.href),
       visibleGames: games.filter(game => game.show),
     };
   },
   methods: {
-    playGame(game) {
+    playGame(game, event) {
+      const target = event.currentTarget;
+      if (target.disabled) return;
+
+      // Disable the button for 1 second
+      target.disabled = true;
+      setTimeout(() => {
+        target.disabled = false;
+      }, 1000);
+
       if(game.hasPairs){
         const selectedUnit = game.selectedUnit;
         const selectedPairs = game.selectedPair;
-        const baseUrl = `${import.meta.env.VITE_BASE_HEADER}/RainbowOne/webapp/2.8/gameFile/OKAGames/${game.gameFolderName}/`;
+        const baseUrl = `${import.meta.env.VITE_BASE_HEADER}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
         const newUrl = `${baseUrl}?unit=${selectedUnit}&pairs=${selectedPairs}`;
         window.open(newUrl, '_self');
       }
       else if(game.gameSettings.battle){
         const selectedUnit = game.selectedUnit;
         const battleMode = game.gameSettings.battle.enabled && game.gameSettings.battle.show ? "&playerNumbers=2" : "&playerNumbers=1";
-        const baseUrl = `${import.meta.env.VITE_BASE_HEADER}/RainbowOne/webapp/2.8/gameFile/OKAGames/${game.gameFolderName}/`;
+        const baseUrl = `${import.meta.env.VITE_BASE_HEADER}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
         const newUrl = `${baseUrl}?unit=${selectedUnit}${battleMode}`;
         window.open(newUrl, '_self');
       }
@@ -77,7 +88,7 @@ export default {
         const selectedUnit = game.selectedUnit;
         const removalStatus = game.gameSettings.removal.enabled && game.gameSettings.removal.show? "&removal=1" : "";
         const selectedModel = game.gameSettings.model.enabled && game.gameSettings.model.show ? "full" : "lite";
-        const baseUrl = `${import.meta.env.VITE_BASE_HEADER}/RainbowOne/webapp/2.8/gameFile/OKAGames/${game.gameFolderName}/`;
+        const baseUrl = `${import.meta.env.VITE_BASE_HEADER}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
         const newUrl = `${baseUrl}?unit=${selectedUnit}${removalStatus}&model=${selectedModel}`;
         window.open(newUrl, '_self');
       }
@@ -92,14 +103,35 @@ export default {
         window.open(newUrl, '_self');
       }
     },
-    hideURLPath() {
-      const currentURL = new URL(window.location.href);
-      const baseURL = `${currentURL.protocol}//${currentURL.host}/`;
+    preventZoom(event) {
+      let touchStartTime, lastTouchTime, timeDiff, touches;
 
-      const hiddenPath = "RainbowOne/webapp/OKAGames/";
+      touchStartTime = event.timeStamp;
+      lastTouchTime = this.$refs.gameImage.dataset.lastTouch || touchStartTime;
+      timeDiff = touchStartTime - lastTouchTime;
+      touches = event.touches.length;
+      this.$refs.gameImage.dataset.lastTouch = touchStartTime;
+
+      if (!timeDiff || timeDiff > 500 || touches > 1) return; // not double-tap
+
+      event.preventDefault(); // double tap - prevent the zoom
+      // also synthesize click events we just swallowed up
+      this.$refs.gameImage.click();
+      this.$refs.gameImage.click();
+    },
+    nodoubletapzoom() {
+      const elements = this.$el.querySelectorAll('.game-card .game-image');
+      for (let i = 0; i < elements.length; i++) {
+        elements[i].addEventListener('touchstart', this.preventZoom);
+      }
+    },
+    hideURLPath() {
+      const baseURL = `${this.currentSiteUrl.protocol}//${this.currentSiteUrl.host}/`;
+
+      const hiddenPath = import.meta.env.VITE_BASE_HIDDEN_PATH;
 
       // Check if the current URL includes the hidden path
-      if (currentURL.pathname.includes(hiddenPath)) {
+      if (this.currentSiteUrl.pathname.includes(hiddenPath)) {
         // Store the original URL
         const originalURL = window.location.href;
 
@@ -121,7 +153,14 @@ export default {
     },
   },
   mounted() {
+    this.nodoubletapzoom();
     //this.hideURLPath();
+  },
+  beforeUnmount() {
+    const elements = this.$el.querySelectorAll('.game-card .game-image');
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].removeEventListener('touchstart', this.preventZoom);
+    }
   },
 }
 </script>
@@ -174,8 +213,8 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: calc(min(5vh, 2.5vw));
-    padding: calc(min(0.5vh, 0.5vw));
+    height: calc(min(5vh, 3vw));
+    padding: calc(min(0.5vh, 1vw));
   }
 
   .game-card .game-controls select {
@@ -229,20 +268,8 @@ export default {
 .game-card .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
-  margin: 5px;
-}
-
-.game-card .modelOption {
-  display: inline-block;
-  height: 34px;
-  margin-left: auto;
-  font-size: calc(min(1vh, 1vw));
-  font-weight: bold;
-  font-family: Arial, sans-serif;
-  border-radius: calc(min(0.5vh, 0.5vw));
-  width: calc(min(4vw, 4vw));
+  width: calc(min(5vh, 5vw));
+  height: calc(min(3vh, 3vw));
 }
 
 .game-card .switch input {
@@ -267,10 +294,10 @@ export default {
 .game-card .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
+  width: calc(min(3vh, 3vw));
+  height: calc(min(3vh, 3vw));
+  left: -8%;
+  bottom: 0px;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;
@@ -286,8 +313,19 @@ export default {
 }
 
 .game-card input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+  -webkit-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+.game-card .modelOption {
+  display: inline-block;
+  height: 34px;
+  margin-left: auto;
+  font-size: calc(min(1vh, 1vw));
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  border-radius: calc(min(0.5vh, 0.5vw));
+  width: calc(min(4vw, 4vw));
 }
 </style>
