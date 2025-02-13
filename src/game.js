@@ -200,14 +200,12 @@ export const games = [
     },
     pairs: null,
     units: [
-      { value: "p1u1-a", label: "P1U1-Game A (Listening)" },
-      { value: "p1u5-e", label: "P1U5-Game E (Text)" },
-      { value: "p2u1-e", label: "P2U1-Game E (Text)" },
-      { value: "p2u6-e", label: "P2U6-Game E (Text)" },
-      { value: "p3bu1-b", label: "P3BU1-Game B (Listening)" }
+      { value: "p2u4-e", label: "P2U4-Game E (FillInBlank)" },
+      { value: "p3u2-e", label: "P3U2-Game E (FillInBlank)" },
+      { value: "p3Bu3-b", label: "P3BU3-Game B (Listening)" }
     ],
     selectedPair: null,
-    selectedUnit: "p1u1-a",
+    selectedUnit: "p2u4-e",
   },
   {
     id: 8,
