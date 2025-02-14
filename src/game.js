@@ -200,12 +200,14 @@ export const games = [
     },
     pairs: null,
     units: [
+      { value: "p1u4-e", label: "P1U4-Game E (Listening)"},
+      { value: "p1u9-e", label: "P1U9-Game E (Text)"},
       { value: "p2u4-e", label: "P2U4-Game E (FillInBlank)" },
       { value: "p3u2-e", label: "P3U2-Game E (FillInBlank)" },
       { value: "p3Bu3-b", label: "P3BU3-Game B (Listening)" }
     ],
     selectedPair: null,
-    selectedUnit: "p2u4-e",
+    selectedUnit: "p1u4-e",
   },
   {
     id: 8,
@@ -302,9 +304,9 @@ export const games = [
   {
     id: 11,
     show: true,
-    title: "Game 11: Bouncing(Testing)",
+    title: "Game 11: Bouncing",
     gameFolderName: "Bouncing",
-    image: "image/kingOfSpin_preview.png",
+    image: "image/bouncing_preview.png",
     hasPairs: false,
     gameSettings: {
       isMotionGame: false,
