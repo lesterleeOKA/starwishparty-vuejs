@@ -262,11 +262,12 @@ export const games = [
     },
     pairs: null,
     units: [
-      { value: "p6u1-c", label: "P6U1-Game C (Listening)" },
-      { value: "p6u6-c", label: "P6U6-Game C (Picture)" }
+      { value: "p2u2-e", label: "P2U2-Game E (Text)" },
+      { value: "p2u5-e", label: "P2U5-Game E (Text)" },
+      { value: "p3Bu2-b", label: "P3Bu2-Game B (Picture)" }
     ],
     selectedPair: null,
-    selectedUnit: "p6u1-c",
+    selectedUnit: "p2u2-e",
   },
   {
     id: 10,
