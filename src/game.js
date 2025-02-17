@@ -19,11 +19,19 @@ export const games = [
     },
     pairs: [2, 3, 4, 5, 6],
     units: [
-      { value: "p1u3-a", label: "P1U3-Game A (Listening)" },
+      /*{ value: "p1u3-a", label: "P1U3-Game A (Listening)" },*/
       { value: "p1u3-c", label: "P1U3-Game C (Picture)" },
+      { value: "p1u4-c", label: "P1U4-Game C (Picture)" },
+      { value: "p1u5-c", label: "P1U5-Game C (Picture)" },
+      { value: "p1u6-c", label: "P1U6-Game C (Picture)" },
+      { value: "p1u10-c", label: "P1U10-Game C (Picture)" },
+      { value: "p2u3-b", label: "P2U3-Game B (Picture)" },
+      { value: "p2u4-b", label: "P2U4-Game B (Picture)" },
+      { value: "p2u5-b", label: "P2U5-Game B (Picture)" },
+      { value: "p2u6-b", label: "P2U6-Game B (Picture)" },
     ],
     selectedPair: 5,
-    selectedUnit: "p1u3-a",
+    selectedUnit: "p1u3-c",
   },
   {
     id: 2,
@@ -348,6 +356,7 @@ export const games = [
     },
     pairs: null,
     units: [
+      { value: "p1u7-g", label: "P1U7-Game G (FillInBlank)" },
       { value: "p6u1-c", label: "P6U1-Game C (Listening)" },
       { value: "p6u6-c", label: "P6U6-Game C (Picture)" },
       { value: "p6bu1-c", label: "P6bU1-Game C (Listening)" },
@@ -357,7 +366,7 @@ export const games = [
       { value: "p6bu6-c", label: "P6bU6-Game C (Picture)" }
     ],
     selectedPair: null,
-    selectedUnit: "p6u1-c",
+    selectedUnit: "p1u7-g",
   },
   {
     id: 13,
