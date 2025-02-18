@@ -562,4 +562,35 @@ export const games = [
     selectedPair: null,
     selectedUnit: null,
   },
+  {
+    "id":33,
+    "show":true,
+    "title":"Starwish Game E",
+    "gameFolderName":"StarwishGame_e",
+    "image":"image/starwish_game_e.png",
+    "hasPairs":false,
+    "gameSettings":{
+        "isOldGame":{
+            "dirFolder":"/RainbowOne/webapp/OKAGames/StarwishGame_e/"
+        },
+        "isMotionGame":false,
+        "removal":{
+            "enabled":false,
+            "show":false
+        },
+        "model":{
+            "enabled":false,
+            "show":false
+        }
+    },
+    "pairs":null,
+    "units":[
+        {
+            "value":null,
+            "label":"none"
+        }
+    ],
+    "selectedPair":null,
+    "selectedUnit":null
+}
 ];
