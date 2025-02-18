@@ -451,119 +451,7 @@ export const games = [
     selectedUnit: null,
   },
   {
-    id: 29,
-    show: true,
-    title: "Starwish Game F",
-    gameFolderName: "StarwishGame_f",
-    image: "image/starwish_game_f.png",
-    hasPairs: false,
-    gameSettings: {
-      isOldGame: {
-        dirFolder: "/RainbowOne/webapp/OKAGames/StarwishGame_f/"
-      },
-      isMotionGame: false,
-      removal: {
-        enabled: false,
-        show: false
-      },
-      model: {
-        enabled: false,
-        show: false
-      }
-    },
-    pairs: null,
-    units: [
-      { value: null, label: "none" }
-    ],
-    selectedPair: null,
-    selectedUnit: null,
-  },
-  {
-    id: 30,
-    show: true,
-    title: "Starwish Game G",
-    gameFolderName: "StarwishGame_g",
-    image: "image/starwish_game_g.png",
-    hasPairs: false,
-    gameSettings: {
-      isOldGame: {
-        dirFolder: "/RainbowOne/webapp/OKAGames/StarwishGame_g/"
-      },
-      isMotionGame: false,
-      removal: {
-        enabled: false,
-        show: false
-      },
-      model: {
-        enabled: false,
-        show: false
-      }
-    },
-    pairs: null,
-    units: [
-      { value: null, label: "none" }
-    ],
-    selectedPair: null,
-    selectedUnit: null,
-  },
-  {
-    id: 31,
-    show: true,
-    title: "Starwish Game H",
-    gameFolderName: "StarwishGame_h",
-    image: "image/starwish_game_h.png",
-    hasPairs: false,
-    gameSettings: {
-      isOldGame: {
-        dirFolder: "/RainbowOne/webapp/OKAGames/StarwishGame_h/?unitkey=1"
-      },
-      isMotionGame: false,
-      removal: {
-        enabled: false,
-        show: false
-      },
-      model: {
-        enabled: false,
-        show: false
-      }
-    },
-    pairs: null,
-    units: [
-      { value: null, label: "none" }
-    ],
-    selectedPair: null,
-    selectedUnit: null,
-  },
-  {
-    id: 32,
-    show: true,
-    title: "Starwish Game J",
-    gameFolderName: "StarwishGame_j",
-    image: "image/starwish_game_j.png",
-    hasPairs: false,
-    gameSettings: {
-      isOldGame: {
-        dirFolder: "/RainbowOne/webapp/OKAGames/StarwishGame_j/"
-      },
-      isMotionGame: false,
-      removal: {
-        enabled: false,
-        show: false
-      },
-      model: {
-        enabled: false,
-        show: false
-      }
-    },
-    pairs: null,
-    units: [
-      { value: null, label: "none" }
-    ],
-    selectedPair: null,
-    selectedUnit: null,
-  },
-  {
-    "id":33,
+    "id":29,
     "show":true,
     "title":"Starwish Game E",
     "gameFolderName":"StarwishGame_e",
@@ -592,5 +480,117 @@ export const games = [
     ],
     "selectedPair":null,
     "selectedUnit":null
-}
+},
+  {
+    id: 30,
+    show: true,
+    title: "Starwish Game F",
+    gameFolderName: "StarwishGame_f",
+    image: "image/starwish_game_f.png",
+    hasPairs: false,
+    gameSettings: {
+      isOldGame: {
+        dirFolder: "/RainbowOne/webapp/OKAGames/StarwishGame_f/"
+      },
+      isMotionGame: false,
+      removal: {
+        enabled: false,
+        show: false
+      },
+      model: {
+        enabled: false,
+        show: false
+      }
+    },
+    pairs: null,
+    units: [
+      { value: null, label: "none" }
+    ],
+    selectedPair: null,
+    selectedUnit: null,
+  },
+  {
+    id: 31,
+    show: true,
+    title: "Starwish Game G",
+    gameFolderName: "StarwishGame_g",
+    image: "image/starwish_game_g.png",
+    hasPairs: false,
+    gameSettings: {
+      isOldGame: {
+        dirFolder: "/RainbowOne/webapp/OKAGames/StarwishGame_g/"
+      },
+      isMotionGame: false,
+      removal: {
+        enabled: false,
+        show: false
+      },
+      model: {
+        enabled: false,
+        show: false
+      }
+    },
+    pairs: null,
+    units: [
+      { value: null, label: "none" }
+    ],
+    selectedPair: null,
+    selectedUnit: null,
+  },
+  {
+    id: 32,
+    show: true,
+    title: "Starwish Game H",
+    gameFolderName: "StarwishGame_h",
+    image: "image/starwish_game_h.png",
+    hasPairs: false,
+    gameSettings: {
+      isOldGame: {
+        dirFolder: "/RainbowOne/webapp/OKAGames/StarwishGame_h/?unitkey=1"
+      },
+      isMotionGame: false,
+      removal: {
+        enabled: false,
+        show: false
+      },
+      model: {
+        enabled: false,
+        show: false
+      }
+    },
+    pairs: null,
+    units: [
+      { value: null, label: "none" }
+    ],
+    selectedPair: null,
+    selectedUnit: null,
+  },
+  {
+    id: 34,
+    show: true,
+    title: "Starwish Game J",
+    gameFolderName: "StarwishGame_j",
+    image: "image/starwish_game_j.png",
+    hasPairs: false,
+    gameSettings: {
+      isOldGame: {
+        dirFolder: "/RainbowOne/webapp/OKAGames/StarwishGame_j/"
+      },
+      isMotionGame: false,
+      removal: {
+        enabled: false,
+        show: false
+      },
+      model: {
+        enabled: false,
+        show: false
+      }
+    },
+    pairs: null,
+    units: [
+      { value: null, label: "none" }
+    ],
+    selectedPair: null,
+    selectedUnit: null,
+  }
 ];
