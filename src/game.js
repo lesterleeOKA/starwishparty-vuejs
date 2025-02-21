@@ -388,10 +388,11 @@ export const games = [
     },
     pairs: null,
     units: [
+      { value: "p1u1-c", label: "P1U1-Game C (Picture)" },
       { value: "p1u7-h", label: "P1U7-Game H (Picture)" }
     ],
     selectedPair: null,
-    selectedUnit: "p1u7-h",
+    selectedUnit: "p1u1-c",
   },
   //小王子系列///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   {
