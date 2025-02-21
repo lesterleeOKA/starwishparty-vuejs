@@ -303,6 +303,7 @@ export const games = [
     units: [
       { value: "p1u2-e", label: "P1U2-Game E (FillInBlank)" },
       { value: "p1u4-d", label: "P1U4-Game D (Picture)" },
+      { value: "p1u6-e", label: "P1U6-Game E (FillInBlank)" },
       { value: "p2u1-c", label: "P2U1-Game C (Listening)" },
       { value: "p2u2-c", label: "P2U2-Game C (Listening)" },
       { value: "p3u1-d", label: "P3U1-Game D (Listening)" }
