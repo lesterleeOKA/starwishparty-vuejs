@@ -427,7 +427,7 @@ export const games = [
   },
   {
     id: 28,
-    show: true,
+    show: false,
     title: "Starwish Game D",
     gameFolderName: "StarwishGame_d",
     image: "image/starwish_game_d.png",
@@ -454,36 +454,36 @@ export const games = [
     selectedUnit: null,
   },
   {
-    "id":29,
-    "show":true,
-    "title":"Starwish Game E",
-    "gameFolderName":"StarwishGame_e",
-    "image":"image/starwish_game_e.png",
-    "hasPairs":false,
-    "gameSettings":{
-        "isOldGame":{
-            "dirFolder":"/RainbowOne/webapp/OKAGames/StarwishGame_e/"
+    id: 29,
+    show: false,
+    title: "Starwish Game E",
+    gameFolderName: "StarwishGame_e",
+    image: "image/starwish_game_e.png",
+    hasPairs: false,
+    gameSettings: {
+        isOldGame: {
+            dirFolder: "/RainbowOne/webapp/OKAGames/StarwishGame_e/"
         },
-        "isMotionGame":false,
-        "removal":{
-            "enabled":false,
-            "show":false
+        isMotionGame: false,
+        removal: {
+            enabled: false,
+            show: false
         },
-        "model":{
-            "enabled":false,
-            "show":false
+        model: {
+            enabled: false,
+            show: false
         }
     },
-    "pairs":null,
-    "units":[
+    pairs: null,
+    units: [
         {
-            "value":null,
-            "label":"none"
+            value: null,
+            label: "none"
         }
     ],
-    "selectedPair":null,
-    "selectedUnit":null
-},
+    selectedPair: null,
+    selectedUnit: null
+  },
   {
     id: 30,
     show: true,
@@ -514,7 +514,7 @@ export const games = [
   },
   {
     id: 31,
-    show: true,
+    show: false,
     title: "Starwish Game G",
     gameFolderName: "StarwishGame_g",
     image: "image/starwish_game_g.png",
@@ -542,7 +542,7 @@ export const games = [
   },
   {
     id: 32,
-    show: true,
+    show: false,
     title: "Starwish Game H",
     gameFolderName: "StarwishGame_h",
     image: "image/starwish_game_h.png",
