@@ -128,20 +128,19 @@ export default {
     },
     hideURLPath() {
       const currentSite = import.meta.env.VITE_SITE;
-
       switch(currentSite){
         case "dev":
           this.currentSiteHeader =  import.meta.env.VITE_BASE_DEV_HEADER;
           return;
         case "prod":
           this.currentSiteHeader =  import.meta.env.VITE_BASE_PROD_HEADER;
+          //console.log("currentSiteUrl", this.currentSiteUrl );
           const baseURL = `${this.currentSiteUrl.protocol}//${this.currentSiteUrl.host}/`;
-          const hiddenPath = this.currentSiteHeader;
+          const hiddenPath = import.meta.env.VITE_BASE_HIDDEN_PATH;
           // Check if the current URL includes the hidden path
           if (this.currentSiteUrl.pathname.includes(hiddenPath)) {
             // Store the original URL
             const originalURL = window.location.href;
-
             // Update the URL to the base URL
             window.history.replaceState(null, null, baseURL);
 
