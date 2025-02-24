@@ -55,6 +55,7 @@ export default {
   data() {
     return {
       games: games.map(game => ({ ...game, loading: false })),
+      currentSiteHeader: "",
       currentSiteUrl:new URL(window.location.href),
       visibleGames: games.filter(game => game.show),
     };
@@ -73,14 +74,14 @@ export default {
       if(game.hasPairs){
         const selectedUnit = game.selectedUnit;
         const selectedPairs = game.selectedPair;
-        const baseUrl = `${import.meta.env.VITE_BASE_HEADER}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
+        const baseUrl = `${this.currentSiteHeader}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
         const newUrl = `${baseUrl}?unit=${selectedUnit}&pairs=${selectedPairs}`;
         window.open(newUrl, '_self');
       }
       else if(game.gameSettings.battle){
         const selectedUnit = game.selectedUnit;
         const battleMode = game.gameSettings.battle.enabled && game.gameSettings.battle.show ? "&playerNumbers=2" : "&playerNumbers=1";
-        const baseUrl = `${import.meta.env.VITE_BASE_HEADER}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
+        const baseUrl = `${this.currentSiteHeader}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
         const newUrl = `${baseUrl}?unit=${selectedUnit}${battleMode}`;
         window.open(newUrl, '_self');
       }
@@ -88,17 +89,17 @@ export default {
         const selectedUnit = game.selectedUnit;
         const removalStatus = game.gameSettings.removal.enabled && game.gameSettings.removal.show? "&removal=1" : "";
         const selectedModel = game.gameSettings.model.enabled && game.gameSettings.model.show ? "full" : "lite";
-        const baseUrl = `${import.meta.env.VITE_BASE_HEADER}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
+        const baseUrl = `${this.currentSiteHeader}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
         const newUrl = `${baseUrl}?unit=${selectedUnit}${removalStatus}&model=${selectedModel}`;
         window.open(newUrl, '_self');
       }
       else if(game.gameSettings.isOldGame){
-        const newUrl = `${import.meta.env.VITE_BASE_HEADER}${game.gameSettings.isOldGame.dirFolder}`;
+        const newUrl = `${this.currentSiteHeader}${game.gameSettings.isOldGame.dirFolder}`;
         window.open(newUrl, '_self');
       }
       else {
         const selectedUnit = game.selectedUnit ? `?unit=${game.selectedUnit}` : "";
-        const baseUrl = `${import.meta.env.VITE_BASE_HEADER}/RainbowOne/webapp/2.8/gameFile/OKAGames/${game.gameFolderName}/`;
+        const baseUrl = `${this.currentSiteHeader}/RainbowOne/webapp/2.8/gameFile/OKAGames/${game.gameFolderName}/`;
         const newUrl = `${baseUrl}${selectedUnit}`;
         window.open(newUrl, '_self');
       }
@@ -126,35 +127,45 @@ export default {
       }
     },
     hideURLPath() {
-      const baseURL = `${this.currentSiteUrl.protocol}//${this.currentSiteUrl.host}/`;
+      const currentSite = import.meta.env.VITE_SITE;
 
-      const hiddenPath = import.meta.env.VITE_BASE_HIDDEN_PATH;
+      switch(currentSite){
+        case "dev":
+          this.currentSiteHeader =  import.meta.env.VITE_BASE_DEV_HEADER;
+          return;
+        case "prod":
+          this.currentSiteHeader =  import.meta.env.VITE_BASE_PROD_HEADER;
+          const baseURL = `${this.currentSiteUrl.protocol}//${this.currentSiteUrl.host}/`;
+          const hiddenPath = this.currentSiteHeader;
+          // Check if the current URL includes the hidden path
+          if (this.currentSiteUrl.pathname.includes(hiddenPath)) {
+            // Store the original URL
+            const originalURL = window.location.href;
 
-      // Check if the current URL includes the hidden path
-      if (this.currentSiteUrl.pathname.includes(hiddenPath)) {
-        // Store the original URL
-        const originalURL = window.location.href;
+            // Update the URL to the base URL
+            window.history.replaceState(null, null, baseURL);
 
-        // Update the URL to the base URL
-        window.history.replaceState(null, null, baseURL);
-
-        // Set up the onbeforeunload event handler
-        window.onbeforeunload = () => {
-          // Check if the original URL is available
-          if (originalURL) {
-            // Navigate back to the original URL
-            window.location.href = originalURL;
+            // Set up the onbeforeunload event handler
+            window.onbeforeunload = () => {
+              // Check if the original URL is available
+              if (originalURL) {
+                // Navigate back to the original URL
+                window.location.href = originalURL;
+              }
+            };
+          } else {
+            // Remove the onbeforeunload event handler if the hidden path is not present
+            window.onbeforeunload = null;
           }
-        };
-      } else {
-        // Remove the onbeforeunload event handler if the hidden path is not present
-        window.onbeforeunload = null;
+          break;
       }
+
+
     },
   },
   mounted() {
     this.nodoubletapzoom();
-    //this.hideURLPath();
+    this.hideURLPath();
   },
   beforeUnmount() {
     const elements = this.$el.querySelectorAll('.game-card .game-image');
