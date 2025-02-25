@@ -331,12 +331,13 @@ export const games = [
     },
     pairs: null,
     units: [
+      { value: "p1u1-a", label: "P1U1-Game A (Listening)" },
       { value: "p1u5-e", label: "P1U5-Game E (Text)" },
-      { value: "p6u1-c", label: "P6U1-Game C (Listening)" },
-      { value: "p6u6-c", label: "P6U6-Game C (Picture)" }
+      /*{ value: "p6u1-c", label: "P6U1-Game C (Listening)" },
+      { value: "p6u6-c", label: "P6U6-Game C (Picture)" }*/
     ],
     selectedPair: null,
-    selectedUnit: "p1u5-e",
+    selectedUnit: "p1u1-a",
   },
   {
     id: 12,
