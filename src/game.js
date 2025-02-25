@@ -427,7 +427,7 @@ export const games = [
   },
   {
     id: 28,
-    show: false,
+    show: true,
     title: "Starwish Game D",
     gameFolderName: "StarwishGame_d",
     image: "image/starwish_game_d.png",
@@ -455,7 +455,7 @@ export const games = [
   },
   {
     id: 29,
-    show: false,
+    show: true,
     title: "Starwish Game E",
     gameFolderName: "StarwishGame_e",
     image: "image/starwish_game_e.png",
@@ -514,7 +514,7 @@ export const games = [
   },
   {
     id: 31,
-    show: false,
+    show: true,
     title: "Starwish Game G",
     gameFolderName: "StarwishGame_g",
     image: "image/starwish_game_g.png",
@@ -542,7 +542,7 @@ export const games = [
   },
   {
     id: 32,
-    show: false,
+    show: true,
     title: "Starwish Game H",
     gameFolderName: "StarwishGame_h",
     image: "image/starwish_game_h.png",
