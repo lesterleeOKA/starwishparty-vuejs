@@ -405,9 +405,6 @@ export const games = [
     image: "image/starwish_game_a.png",
     hasPairs: false,
     gameSettings: {
-      isOldGame: {
-        dirFolder: "/RainbowOne/webapp/OKAGames/StarwishGame_a/"
-      },
       isMotionGame: false,
       removal: {
         enabled: false,
@@ -433,9 +430,6 @@ export const games = [
     image: "image/starwish_game_d.png",
     hasPairs: false,
     gameSettings: {
-      isOldGame: {
-        dirFolder: "/RainbowOne/webapp/OKAGames/StarwishGame_d/?unitkey=1"
-      },
       isMotionGame: false,
       removal: {
         enabled: false,
@@ -461,9 +455,6 @@ export const games = [
     image: "image/starwish_game_e.png",
     hasPairs: false,
     gameSettings: {
-        isOldGame: {
-            dirFolder: "/RainbowOne/webapp/OKAGames/StarwishGame_e/"
-        },
         isMotionGame: false,
         removal: {
             enabled: false,
@@ -492,9 +483,6 @@ export const games = [
     image: "image/starwish_game_f.png",
     hasPairs: false,
     gameSettings: {
-      isOldGame: {
-        dirFolder: "/RainbowOne/webapp/OKAGames/StarwishGame_f/"
-      },
       isMotionGame: false,
       removal: {
         enabled: false,
@@ -520,9 +508,6 @@ export const games = [
     image: "image/starwish_game_g.png",
     hasPairs: false,
     gameSettings: {
-      isOldGame: {
-        dirFolder: "/RainbowOne/webapp/OKAGames/StarwishGame_g/"
-      },
       isMotionGame: false,
       removal: {
         enabled: false,
@@ -548,9 +533,6 @@ export const games = [
     image: "image/starwish_game_h.png",
     hasPairs: false,
     gameSettings: {
-      isOldGame: {
-        dirFolder: "/RainbowOne/webapp/OKAGames/StarwishGame_h/?unitkey=1"
-      },
       isMotionGame: false,
       removal: {
         enabled: false,
@@ -576,9 +558,6 @@ export const games = [
     image: "image/starwish_game_j.png",
     hasPairs: false,
     gameSettings: {
-      isOldGame: {
-        dirFolder: "/RainbowOne/webapp/OKAGames/StarwishGame_j/"
-      },
       isMotionGame: false,
       removal: {
         enabled: false,
