@@ -431,6 +431,9 @@ export const games = [
     image: "image/starwish_game_d.png",
     hasPairs: false,
     gameSettings: {
+      isOldGame: {
+        dirFolder: "/RainbowOne/webapp/2.8/gamefile/OKAGames/StarwishGame_d/?unitkey=1"
+      },
       isMotionGame: false,
       removal: {
         enabled: false,
@@ -534,6 +537,9 @@ export const games = [
     image: "image/starwish_game_h.png",
     hasPairs: false,
     gameSettings: {
+      isOldGame: {
+        dirFolder: "/RainbowOne/webapp/2.8/gamefile/OKAGames/StarwishGame_h/?unitkey=1"
+      },
       isMotionGame: false,
       removal: {
         enabled: false,
