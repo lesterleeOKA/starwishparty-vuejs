@@ -18,7 +18,7 @@ import Games from './GameCard.vue'
       </div>
     </div>
   </div>
-  <div class="version-text">Ver 1.08</div>
+  <div class="version-text">Ver 1.09</div>
 </template>
 
 <script>
