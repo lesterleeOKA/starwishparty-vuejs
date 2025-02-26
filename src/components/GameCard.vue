@@ -2,7 +2,7 @@
 <template>
   <div class="game-container">
     <div v-for="game in visibleGames" :key="game.id" class="game-card">
-      <img :src="this.currentSiteUrl.href + game.image" :alt="game.title" class="game-image" translate="no"/>
+      <img :src="this.currentSiteUrl + game.image" :alt="game.title" class="game-image" translate="no"/>
       <h1 class="game-title">{{ game.title }}</h1>
       <!--Settings items for different games-->
       <div v-if="game.hasPairs" class="game-controls">
@@ -56,7 +56,7 @@ export default {
     return {
       games: games.map(game => ({ ...game, loading: false })),
       currentSiteHeader: "",
-      currentSiteUrl:new URL(window.location.href),
+      currentSiteUrl:"",
       visibleGames: games.filter(game => game.show),
     };
   },
@@ -131,9 +131,11 @@ export default {
       switch(currentSite){
         case "dev":
           this.currentSiteHeader =  import.meta.env.VITE_BASE_DEV_HEADER;
+          this.currentSiteUrl = `${this.currentSiteHeader}${import.meta.env.VITE_BASE_URL}`;
           return;
         case "prod":
           this.currentSiteHeader =  import.meta.env.VITE_BASE_PROD_HEADER;
+          this.currentSiteUrl = `${this.currentSiteHeader}${import.meta.env.VITE_BASE_URL}`;
           //console.log("currentSiteUrl", this.currentSiteUrl );
           const baseURL = `${this.currentSiteUrl.protocol}//${this.currentSiteUrl.host}/`;
           const hiddenPath = import.meta.env.VITE_BASE_HIDDEN_PATH;

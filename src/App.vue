@@ -1,12 +1,11 @@
+<!--App.Vue-->
 <script setup>
 import Background from './components/Background.vue'
-import Container from './components/Container.vue'
 </script>
 
 <template>
   <main>
     <Background />
-    <Container />
+    <router-view />
   </main>
 </template>
-

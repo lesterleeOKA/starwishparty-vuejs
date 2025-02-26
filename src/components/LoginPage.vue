@@ -43,6 +43,7 @@
 
 <script>
 export default {
+  name: "LoginPage",
   data() {
     return {
       email: '',
@@ -52,9 +53,9 @@ export default {
   },
   methods: {
     handleLogin() {
-      // Handle login logic here
-      console.log('Logging in with:', this.email, this.password, this.rememberMe);
-      // You can replace this with actual login logic (e.g., API call)
+      console.log('Successful login with:', this.email, this.password, this.rememberMe);
+      this.$router.push({ name: 'DemoPage' });
+      // Implement actual login logic here
     }
   }
 };
@@ -62,11 +63,16 @@ export default {
 
 <style scoped>
 .login-page {
-  background: linear-gradient(135deg, #f5b7b1, #f7dc6f);
+  position: absolute;
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
+  width: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  align-content: center;
+  justify-content: space-around;
 }
 
 .login-container {
