@@ -30,7 +30,7 @@ export const games = [
       { value: "p2u5-b", label: "P2U5-Game B (Picture)" },
       { value: "p2u6-b", label: "P2U6-Game B (Picture)" },
     ],
-    selectedPair: 5,
+    selectedPair: 2,
     selectedUnit: "p1u3-c",
   },
   {
