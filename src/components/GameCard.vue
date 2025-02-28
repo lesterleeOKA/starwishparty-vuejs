@@ -55,8 +55,9 @@ export default {
   data() {
     return {
       games: games.map(game => ({ ...game, loading: false })),
-      currentSiteHeader: "",
+      currentSiteHeader: `${window.location.protocol}//${window.location.hostname}${window.location.port ? `:${window.location.port}` : ''}`,
       currentSiteUrl:"",
+      gameSiteHeader:"",
       visibleGames: games.filter(game => game.show),
     };
   },
@@ -74,14 +75,14 @@ export default {
       if(game.hasPairs){
         const selectedUnit = game.selectedUnit;
         const selectedPairs = game.selectedPair;
-        const baseUrl = `${this.currentSiteHeader}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
+        const baseUrl = `${this.gameSiteHeader}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
         const newUrl = `${baseUrl}?unit=${selectedUnit}&pairs=${selectedPairs}`;
         window.open(newUrl, '_self');
       }
       else if(game.gameSettings.battle){
         const selectedUnit = game.selectedUnit;
         const battleMode = game.gameSettings.battle.enabled && game.gameSettings.battle.show ? "&playerNumbers=2" : "&playerNumbers=1";
-        const baseUrl = `${this.currentSiteHeader}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
+        const baseUrl = `${this.gameSiteHeader}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
         const newUrl = `${baseUrl}?unit=${selectedUnit}${battleMode}`;
         window.open(newUrl, '_self');
       }
@@ -89,17 +90,17 @@ export default {
         const selectedUnit = game.selectedUnit;
         const removalStatus = game.gameSettings.removal.enabled && game.gameSettings.removal.show? "&removal=1" : "";
         const selectedModel = game.gameSettings.model.enabled && game.gameSettings.model.show ? "full" : "lite";
-        const baseUrl = `${this.currentSiteHeader}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
+        const baseUrl = `${this.gameSiteHeader}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
         const newUrl = `${baseUrl}?unit=${selectedUnit}${removalStatus}&model=${selectedModel}`;
         window.open(newUrl, '_self');
       }
       else if(game.gameSettings.isOldGame){
-        const newUrl = `${this.currentSiteHeader}${game.gameSettings.isOldGame.dirFolder}`;
+        const newUrl = `${this.gameSiteHeader}${game.gameSettings.isOldGame.dirFolder}`;
         window.open(newUrl, '_self');
       }
       else {
         const selectedUnit = game.selectedUnit ? `?unit=${game.selectedUnit}` : "";
-        const baseUrl = `${this.currentSiteHeader}/RainbowOne/webapp/2.8/gameFile/OKAGames/${game.gameFolderName}/`;
+        const baseUrl = `${this.gameSiteHeader}/RainbowOne/webapp/2.8/gameFile/OKAGames/${game.gameFolderName}/`;
         const newUrl = `${baseUrl}${selectedUnit}`;
         window.open(newUrl, '_self');
       }
@@ -126,25 +127,41 @@ export default {
         elements[i].addEventListener('touchstart', this.preventZoom);
       }
     },
+    checkCurrectSite(){
+      this.currentSiteUrl = `${this.currentSiteHeader}${import.meta.env.VITE_BASE_URL}`;
+      if(this.currentSiteHeader.includes("localhost")) {
+        document.title = "Starwish Party (Local)";
+        console.log("current site is localhost");
+        this.gameSiteHeader = `${import.meta.env.VITE_BASE_DEV_HEADER}`
+        return;
+      }
+      else if(this.currentSiteHeader.includes(import.meta.env.VITE_BASE_DEV_HEADER)){
+        document.title = "Starwish Party (Dev)";
+        this.configCSPMeta();
+        console.log("current site is development");
+        this.gameSiteHeader = `${import.meta.env.VITE_BASE_DEV_HEADER}`
+      }
+      else if(this.currentSiteHeader.includes(import.meta.env.VITE_BASE_PROD_HEADER)){
+        document.title = "Starwish Party";
+        this.configCSPMeta();
+        console.log("current site is production");
+        this.gameSiteHeader = `${import.meta.env.VITE_BASE_PROD_HEADER}`
+        this.hideURLPath();
+      }
+    },
+    configCSPMeta(){
+      const cspMeta = document.getElementById('csp-meta');
+      cspMeta.setAttribute('http-equiv', 'Content-Security-Policy');
+      cspMeta.setAttribute('content', "default-src 'self'; img-src 'self' data:;");
+    },
     hideURLPath() {
-      const currentSite = import.meta.env.VITE_SITE;
-      switch(currentSite){
-        case "dev":
-          this.currentSiteHeader =  import.meta.env.VITE_BASE_DEV_HEADER;
-          this.currentSiteUrl = `${this.currentSiteHeader}${import.meta.env.VITE_BASE_URL}`;
-          return;
-        case "prod":
-          this.currentSiteHeader =  import.meta.env.VITE_BASE_PROD_HEADER;
-          this.currentSiteUrl = `${this.currentSiteHeader}${import.meta.env.VITE_BASE_URL}`;
-          //console.log("currentSiteUrl", this.currentSiteUrl );
-          const baseURL = `${this.currentSiteUrl.protocol}//${this.currentSiteUrl.host}/`;
           const hiddenPath = import.meta.env.VITE_BASE_HIDDEN_PATH;
           // Check if the current URL includes the hidden path
-          if (this.currentSiteUrl.pathname.includes(hiddenPath)) {
+          if (this.currentSiteUrl.includes(hiddenPath)) {
             // Store the original URL
             const originalURL = window.location.href;
             // Update the URL to the base URL
-            window.history.replaceState(null, null, baseURL);
+            window.history.replaceState(null, null, this.currentSiteHeader);
 
             // Set up the onbeforeunload event handler
             window.onbeforeunload = () => {
@@ -158,15 +175,11 @@ export default {
             // Remove the onbeforeunload event handler if the hidden path is not present
             window.onbeforeunload = null;
           }
-          break;
-      }
-
-
-    },
+      },
   },
   mounted() {
     this.nodoubletapzoom();
-    this.hideURLPath();
+    this.checkCurrectSite();
   },
   beforeUnmount() {
     const elements = this.$el.querySelectorAll('.game-card .game-image');
