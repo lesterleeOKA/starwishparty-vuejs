@@ -141,7 +141,8 @@ export default {
         console.log("current site is development");
         this.gameSiteHeader = `${import.meta.env.VITE_BASE_DEV_HEADER}`
       }
-      else if(this.currentSiteHeader.includes(import.meta.env.VITE_BASE_PROD_HEADER)){
+      else if(this.currentSiteHeader.includes(import.meta.env.VITE_BASE_PROD_GAME_DOMAIN) ||
+      this.currentSiteHeader.includes(import.meta.env.VITE_BASE_PROD_HEADER) ){
         document.title = "Starwish Party";
         this.configCSPMeta();
         console.log("current site is production");
