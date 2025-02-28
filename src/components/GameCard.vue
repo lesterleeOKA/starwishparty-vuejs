@@ -38,7 +38,7 @@
 
       <div class="game-controls">
         <select v-model="game.selectedUnit" style="overflow-y:auto;">
-          <option v-for="unit in game.units" :value="unit.value" :key="unit.value">{{ unit.label }}</option>
+          <option v-for="unit in filteredUnits(game.units)" :value="unit.value" :key="unit.value">{{ unit.label }}</option>
         </select>
         <button @click="playGame(game, $event)" @touchend="playGame(game, $event)" class="play-button">Play</button>
       </div>
@@ -47,21 +47,31 @@
 </template>
 
 <script>
-import { games } from '../game.js';
-
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Games", // Component name
+  props: {
+    visibleGames: {
+      type: Array,
+      required: true
+    },
+    selectedLevel: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
-      games: games.map(game => ({ ...game, loading: false })),
       currentSiteHeader: `${window.location.protocol}//${window.location.hostname}${window.location.port ? `:${window.location.port}` : ''}`,
       currentSiteUrl:"",
       gameSiteHeader:"",
-      visibleGames: games.filter(game => game.show),
     };
   },
   methods: {
+    filteredUnits(units) {
+      if (this.selectedLevel === 'None') return units;
+      return units.filter(unit => unit.value && unit.value.startsWith(this.selectedLevel));
+    },
     playGame(game, event) {
       const target = event.currentTarget;
       if (target.disabled) return;
@@ -142,7 +152,7 @@ export default {
         this.gameSiteHeader = `${import.meta.env.VITE_BASE_DEV_HEADER}`
       }
       else if(this.currentSiteHeader.includes(import.meta.env.VITE_BASE_PROD_GAME_DOMAIN) ||
-      this.currentSiteHeader.includes(import.meta.env.VITE_BASE_PROD_HEADER) ){
+      this.currentSiteHeader.includes(import.meta.env.VITE_BASE_PROD_HEADER)){
         document.title = "Starwish Party";
         this.configCSPMeta();
         console.log("current site is production");
@@ -191,6 +201,18 @@ export default {
 }
 </script>
 <style scoped>
+.main-container {
+  position: relative;
+  width: 100%;
+}
+.filter-selector {
+  margin-bottom: 20px;
+}
+.filter-selector select {
+  padding: 10px;
+  cursor: pointer;
+}
+
  h1{
     font-size: 1.2vw;
     font-weight: 700;
