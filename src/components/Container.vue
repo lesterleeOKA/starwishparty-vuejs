@@ -24,12 +24,42 @@
       </div>
     </div>
   </div>
-  <div class="version-text">Ver 1.09</div>
+  <div class="version-container">
+    <div class="version-text">Ver 1.09</div>
+    <button class="history-button" @click="openHistoryPage">History</button>
+  </div>
+
+  <div class="historyPage" id="history" v-if="isHistoryVisible">
+    <div class="history-content">
+      <h4>Update History</h4>
+      <span class="close-button" @click="closeHistoryPage">&times;</span>
+    </div>
+    <div class="history-list" ref="historyList">
+      <div v-for="(version, index) in historyVersions" :key="index" class="history-item">
+        <h5 class="version-title">{{ version.version }}</h5>
+        <ul>
+          <li v-for="(update, idx) in version.updates" :key="idx">
+            <template v-if="typeof update === 'string'">
+              {{ update }}
+            </template>
+            <template v-else>
+              {{ update.title }}
+              <ul>
+                <li v-for="(detail, dIdx) in update.details" :key="dIdx">{{ detail }}</li>
+              </ul>
+            </template>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
 </template>
 
 <script>
 import Games from './GameCard.vue'
 import { games } from '../game.js';
+import { versionLog } from '../versionLog.js';
 
 export default {
   name: "Container",
@@ -42,6 +72,8 @@ export default {
       visibleGames: games.filter(game => game.show),
       levels: ["p1", "p2", "p3", "p4", "p5", "p6"],
       selectedLevel: 'None',
+      isHistoryVisible: false,
+      historyVersions: [],
     };
   },
   methods: {
@@ -63,6 +95,18 @@ export default {
       if (this.selectedLevel === 'None') return units;
       return units.filter(unit => unit.value && unit.value.startsWith(this.selectedLevel));
     },
+    openHistoryPage() {
+      this.isHistoryVisible = true;
+      this.loadHistoryVersions();
+      console.log(".................................................................open history page");
+    },
+    closeHistoryPage() {
+      this.isHistoryVisible = false;
+      console.log(".................................................................close history page");
+    },
+    loadHistoryVersions() {
+      this.historyVersions = versionLog;
+    }
   },
 }
 </script>
@@ -74,27 +118,27 @@ export default {
   margin: calc(min(1vh, 1vw));
 }
 .filter-label {
-  margin-right: 10px; /* 标签与选择框之间的空间 */
-  font-weight: bold; /* 可选：加粗标签文字 */
+  margin-right: 10px;
+  font-weight: bold;
 }
 
 .filter-selector select {
-  padding: 10px; /* 内边距 */
-  cursor: pointer; /* 鼠标样式 */
-  font-size: 1em; /* 字体大小 */
-  border: 1px solid #ccc; /* 边框 */
-  border-radius: 5px; /* 圆角边框 */
-  background-color: #fff; /* 背景颜色 */
-  transition: border-color 0.3s; /* 边框颜色过渡 */
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: border-color 0.3s;
 }
 
 .filter-selector select:hover {
-  border-color: #499fd1; /* 悬停时边框颜色 */
+  border-color: #499fd1;
 }
 
 .filter-selector select:focus {
-  outline: none; /* 去掉聚焦时的轮廓 */
-  border-color: #2196F3; /* 聚焦时边框颜色 */
+  outline: none;
+  border-color: #2196F3;
 }
 .starwish-party-container {
   position: absolute;
@@ -136,13 +180,28 @@ export default {
   text-align: center;
   font-family: Arial;
 }
+.version-container {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+}
 .version-text {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  font-size: 12px;
-  color: #ffffff;
-  z-index: 1;
+    font-size: 12px;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+.history-button {
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #ffffff;
+    background-color: #00bff9;
+    border: none;
+    border-radius: 5px;
 }
 .game-container {
   position: absolute;
@@ -156,5 +215,58 @@ export default {
 }
 .game-container > * {
   margin: 0 calc(min(7.5vw, 7.5vh) / 2);
+}
+
+.historyPage {
+    position: fixed; /* Stay in place */
+    z-index: 2; /* Sit on top */
+    left:0;
+    top: 0;
+    width: 25%; /* Full width */
+    height: 50%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.3); /* Fallback color and transparency */
+}
+.history-content {
+    background-color: #fff; /* White background */
+    margin: 0 auto; /* Center horizontally */
+    padding: 10px; /* Padding */
+    border: 1px solid #888; /* Border */
+    width: 100%; /* Width of the modal */
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space between items */
+}
+.version-title {
+    text-decoration: underline; /* Underline the version title */
+    margin: 10px 0; /* Space around titles */
+}
+.history-list {
+    max-height: calc(100% - 45px);
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 10px; /* Padding around the content */
+    border-top: 1px solid #888; /* Optional: border for separation */
+}
+.history-item {
+    margin-bottom: 20px;
+    color: white;
+}
+.history-item ul {
+    padding-left: 20px; /* Indent the list */
+}
+.history-item ul ul {
+    padding-left: 20px; /* Further indent nested lists */
+}
+
+.close-button {
+    color: #aaa; /* Close button color */
+    font-size: 28px; /* Font size */
+    font-weight: bold; /* Bold */
+    cursor: pointer; /* Pointer cursor */
+}
+.close-button:hover,
+.close-button:focus {
+    color: black; /* Color on hover */
+    text-decoration: none; /* No underline */
+    cursor: pointer; /* Pointer cursor */
 }
 </style>

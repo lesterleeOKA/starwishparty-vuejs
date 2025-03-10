@@ -397,6 +397,31 @@ export const games = [
     selectedPair: null,
     selectedUnit: "p1u1-c",
   },
+  {
+    id: 14,
+    show: true,
+    title: "Game 14: Rearrange Together",
+    gameFolderName: "RearrangeTogether",
+    image: "image/RearrangeTogether_preview.png",
+    hasPairs: false,
+    gameSettings: {
+      isMotionGame: false,
+      removal: {
+        enabled: false,
+        show: false
+      },
+      model: {
+        enabled: false,
+        show: false
+      }
+    },
+    pairs: null,
+    units: [
+      { value: "p1u8-i", label: "P1U8-Game I (Text)" }
+    ],
+    selectedPair: null,
+    selectedUnit: "p1u8-i",
+  },
   //小王子系列///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   {
     id: 25,
