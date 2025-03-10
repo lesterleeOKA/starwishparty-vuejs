@@ -224,7 +224,7 @@ export default {
     top: 0;
     width: 25%; /* Full width */
     height: 50%; /* Full height */
-    background-color: rgba(0, 0, 0, 0.3); /* Fallback color and transparency */
+    background-color: rgba(0, 0, 0, 1); /* Fallback color and transparency */
 }
 .history-content {
     background-color: #fff; /* White background */
@@ -241,7 +241,7 @@ export default {
     margin: 10px 0; /* Space around titles */
 }
 .history-list {
-    max-height: calc(100% - 45px);
+    max-height: calc(100% - 56px);
     overflow-y: auto; /* Enable vertical scrolling */
     padding: 10px; /* Padding around the content */
     border-top: 1px solid #888; /* Optional: border for separation */

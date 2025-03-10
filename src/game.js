@@ -399,7 +399,7 @@ export const games = [
   },
   {
     id: 14,
-    show: true,
+    show: false,
     title: "Game 14: Rearrange Together",
     gameFolderName: "RearrangeTogether",
     image: "image/RearrangeTogether_preview.png",
