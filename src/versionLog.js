@@ -1,7 +1,7 @@
 // versionLog.js
 export const versionLog = [
   {
-    version: "Version 1.09 - Page Update (2025/03/10)",
+    version: "Version 1.09 - Page Update (2025/03/11)",
     updates: [
       "Page template switched (vue.js)",
       "Page added game units filter picker",
