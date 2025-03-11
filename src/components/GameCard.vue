@@ -20,6 +20,13 @@
           </label>
       </div>
 
+      <div v-if="game.selectedEngfs" class="game-controls">
+        <h1>Objects Font Size:</h1>
+        <select v-model="game.selectedEngfs" style="overflow-y:auto;flex: 0 0 30%;">
+          <option v-for="fs in game.engfs" :value="fs" :key="fs">{{ fs }}px</option>
+        </select>
+      </div>
+
       <div v-if="game.gameSettings.isMotionGame && game.gameSettings.removal.show" class="game-controls">
           <h1>Virtual Background:</h1>
           <label class="switch">
@@ -82,18 +89,20 @@ export default {
         target.disabled = false;
       }, 1000);
 
+      let engfs = game.selectedEngfs ? `&engfs=${game.selectedEngfs}` : null;
+
       if(game.hasPairs){
         const selectedUnit = game.selectedUnit;
         const selectedPairs = game.selectedPair;
         const baseUrl = `${this.gameSiteHeader}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
-        const newUrl = `${baseUrl}?unit=${selectedUnit}&pairs=${selectedPairs}`;
+        const newUrl = `${baseUrl}?unit=${selectedUnit}&pairs=${selectedPairs}${engfs}`;
         window.open(newUrl, '_self');
       }
       else if(game.gameSettings.battle){
         const selectedUnit = game.selectedUnit;
         const battleMode = game.gameSettings.battle.enabled && game.gameSettings.battle.show ? "&playerNumbers=2" : "&playerNumbers=1";
         const baseUrl = `${this.gameSiteHeader}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
-        const newUrl = `${baseUrl}?unit=${selectedUnit}${battleMode}`;
+        const newUrl = `${baseUrl}?unit=${selectedUnit}${battleMode}${engfs}`;
         window.open(newUrl, '_self');
       }
       else if(game.gameSettings.isMotionGame){
@@ -101,7 +110,7 @@ export default {
         const removalStatus = game.gameSettings.removal.enabled && game.gameSettings.removal.show? "&removal=1" : "";
         const selectedModel = game.gameSettings.model.enabled && game.gameSettings.model.show ? "full" : "lite";
         const baseUrl = `${this.gameSiteHeader}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
-        const newUrl = `${baseUrl}?unit=${selectedUnit}${removalStatus}&model=${selectedModel}`;
+        const newUrl = `${baseUrl}?unit=${selectedUnit}${removalStatus}&model=${selectedModel}${engfs}`;
         window.open(newUrl, '_self');
       }
       else if(game.gameSettings.isOldGame){
@@ -111,7 +120,7 @@ export default {
       else {
         const selectedUnit = game.selectedUnit ? `?unit=${game.selectedUnit}` : "";
         const baseUrl = `${this.gameSiteHeader}/RainbowOne/webapp/2.8/gameFile/OKAGames/${game.gameFolderName}/`;
-        const newUrl = `${baseUrl}${selectedUnit}`;
+        const newUrl = `${baseUrl}${selectedUnit}${engfs}`;
         window.open(newUrl, '_self');
       }
     },

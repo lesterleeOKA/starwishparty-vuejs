@@ -52,6 +52,8 @@ export const games = [
       }
     },
     pairs: null,
+    engfs: [30, 35, 40, 45, 50, 55, 60],
+    selectedEngfs: 50,
     units: [
       { value: "p1u3-c", label: "P1U3-Game C (Picture)" },
       { value: "p1u4-c", label: "P1U4-Game C (Picture)" },
@@ -150,6 +152,8 @@ export const games = [
       }
     },
     pairs: null,
+    engfs: [40, 50, 60, 70, 80, 90, 100],
+    selectedEngfs: 50,
     units: [
       { value: "p2u2-d", label: "P2U2-Game D (Listening)" },
       { value: "p2u3-c", label: "P2U3-Game C (Listening)" },
@@ -180,6 +184,8 @@ export const games = [
       }
     },
     pairs: null,
+    engfs: [25, 30, 35, 40, 45, 50, 55],
+    selectedEngfs: 30,
     units: [
       { value: "p1u1-e", label: "P1U1-Game E (FillInBlank)" },
       { value: "p1u2-a", label: "P1U2-Game A (Listening)" },
@@ -207,6 +213,8 @@ export const games = [
       }
     },
     pairs: null,
+    engfs: [20, 25, 30, 35, 40, 45, 50],
+    selectedEngfs: 25,
     units: [
       { value: "p1u4-e", label: "P1U4-Game E (Listening)"},
       { value: "p1u9-e", label: "P1U9-Game E (Text)"},
@@ -236,6 +244,8 @@ export const games = [
       }
     },
     pairs: null,
+    engfs: [25, 30, 35, 40, 45, 50, 55],
+    selectedEngfs: 30,
     units: [
       { value: "p1u1-a", label: "P1U1-Game A (Listening)" },
       { value: "p1u5-e", label: "P1U5-Game E (Text)" },
@@ -399,7 +409,7 @@ export const games = [
   },
   {
     id: 14,
-    show: false,
+    show: true,
     title: "Game 14: Rearrange Together",
     gameFolderName: "RearrangeTogether",
     image: "image/RearrangeTogether_preview.png",

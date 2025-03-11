@@ -18,7 +18,8 @@ export const versionLog = [
         title: "g2-Motion Phonics",
         details: [
             "Minimized object, collider and hand cursor's size",
-            "Updated default virtual background"
+            "Updated default virtual background",
+            "Added object font size adjustment setting",
         ]
       },
       {
@@ -26,7 +27,8 @@ export const versionLog = [
         details: [
             "Removed snake auto-move and used joystick to move",
             "Improved letters distribution more evenly",
-            "Disabled loss letters in case collide other player"
+            "Disabled loss letters in case collide other player",
+            "Added object font size adjustment setting",
         ]
       },
       {
@@ -45,21 +47,31 @@ export const versionLog = [
         title: "g6-Fruit Ninja",
         details: [
             "Minimized falling objects and collider's size, updated background image",
-            "Updated default virtual background"
+            "Updated default virtual background",
+            "Added object font size adjustment setting",
         ]
       },
       {
         title: "g7-Motion Basket",
         details: [
             "Minimized falling objects, collider and basket's size",
-            "Updated collide falling objects animation & logic"
+            "Updated collide falling objects animation & logic",
+            "Added object font size adjustment setting",
+        ]
+      },
+      {
+        title: "g8-Head To Win",
+        details: [
+            "Minimized default falling speed",
+            "Added object font size adjustment setting",
         ]
       },
       {
         title: "g9-Cross The Floor",
         details: [
             "Minimized moving objects and collider's size",
-            "Updated load game settings variables"
+            "Updated load game settings variables",
+            "Updated joystick control method"
         ]
       },
       {
@@ -71,7 +83,8 @@ export const versionLog = [
       {
           title: "Updated g13-Spell Together",
           details: [
-              "Added some special letters with underline for flipping (e.g., pqbdnu)"
+              "Added some special letters with underline for flipping (e.g., pqbdnu)",
+              "Updated joystick control method"
           ]
       },
     ]
