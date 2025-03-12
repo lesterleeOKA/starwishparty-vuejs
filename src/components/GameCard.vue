@@ -89,7 +89,7 @@ export default {
         target.disabled = false;
       }, 1000);
 
-      let engfs = game.selectedEngfs ? `&engfs=${game.selectedEngfs}` : null;
+      let engfs = game.selectedEngfs ? `&engfs=${game.selectedEngfs}` : "";
 
       if(game.hasPairs){
         const selectedUnit = game.selectedUnit;
