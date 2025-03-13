@@ -6,6 +6,12 @@ export const versionLog = [
       "Added g14-Rearrange Together",
       "Added Starwish Game B",
       {
+        title: "g1-Matching",
+        details: [
+            "Added prepare box and content",
+        ]
+      },
+      {
         title: "g2-Motion Phonics",
         details: [
             "Adjusted hand cursor tracking function, more accurantly",
