@@ -1,6 +1,25 @@
 // versionLog.js
 export const versionLog = [
   {
+    version: "Version 1.10 - Page Update (2025/03/13)",
+    updates: [
+      "Added g14-Rearrange Together",
+      "Added Starwish Game B",
+      {
+        title: "g2-Motion Phonics",
+        details: [
+            "Adjusted hand cursor tracking function, more accurantly",
+        ]
+      },
+      {
+        title: "g3-Spelling",
+        details: [
+            "Adjusted hand cursor tracking function, more accurantly",
+        ]
+      },
+    ]
+  },
+  {
     version: "Version 1.09 - Page Update (2025/03/11)",
     updates: [
       "Page template switched (vue.js)",

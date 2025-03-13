@@ -25,7 +25,7 @@
     </div>
   </div>
   <div class="version-container">
-    <div class="version-text">Ver 1.09</div>
+    <div class="version-text">Ver 1.10</div>
     <button class="history-button" @click="openHistoryPage">History</button>
   </div>
 
