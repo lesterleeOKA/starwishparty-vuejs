@@ -616,6 +616,30 @@ export const games = [
     ],
     selectedPair: null,
     selectedUnit: null,
+  },{
+    id: 33,
+    show: true,
+    title: "Starwish Game I",
+    gameFolderName: "StarwishGame_i",
+    image: "image/starwish_game_i.png",
+    hasPairs: false,
+    gameSettings: {
+      isMotionGame: false,
+      removal: {
+        enabled: false,
+        show: false
+      },
+      model: {
+        enabled: false,
+        show: false
+      }
+    },
+    pairs: null,
+    units: [
+      { value: null, label: "none" }
+    ],
+    selectedPair: null,
+    selectedUnit: null,
   },
   {
     id: 34,
