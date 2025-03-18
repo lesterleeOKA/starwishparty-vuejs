@@ -195,11 +195,18 @@ export default {
             // Remove the onbeforeunload event handler if the hidden path is not present
             window.onbeforeunload = null;
           }
-      },
+    },
+    handleBackNavigation() {
+      history.pushState(null, document.title, location.pathname + location.search);
+      window.addEventListener('popstate', function () {
+        history.pushState(null, document.title, location.pathname + location.search);
+      });
+    },
   },
   mounted() {
     this.nodoubletapzoom();
     this.checkCurrectSite();
+    this.handleBackNavigation();
   },
   beforeUnmount() {
     const elements = this.$el.querySelectorAll('.game-card .game-image');

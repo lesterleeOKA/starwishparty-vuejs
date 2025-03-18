@@ -1,8 +1,9 @@
 // versionLog.js
 export const versionLog = [
   {
-    version: "Version 1.10 - Page Update (2025/03/13)",
+    version: "Version 1.10 - Page Update (2025/03/18)",
     updates: [
+      "Disable move back next page records",
       "Added g14-Rearrange Together",
       "Added Starwish Game B",
       {
@@ -21,6 +22,14 @@ export const versionLog = [
         title: "g3-Spelling",
         details: [
             "Adjusted hand cursor tracking function, more accurantly",
+        ]
+      },
+      {
+        title: "g14-Rearrange Together",
+        details: [
+            "Changed joystick controller method",
+            "Added center line for blocking oppsite side players go through",
+            "Added loading bar of players picking word",
         ]
       },
     ]
