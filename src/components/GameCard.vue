@@ -90,39 +90,39 @@ export default {
       }, 1000);
 
       let engfs = game.selectedEngfs ? `&engfs=${game.selectedEngfs}` : "";
-
+      let newUrl;
       if(game.hasPairs){
         const selectedUnit = game.selectedUnit;
         const selectedPairs = game.selectedPair;
         const baseUrl = `${this.gameSiteHeader}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
-        const newUrl = `${baseUrl}?unit=${selectedUnit}&pairs=${selectedPairs}${engfs}`;
-        window.open(newUrl, '_self');
+        newUrl = `${baseUrl}?unit=${selectedUnit}&pairs=${selectedPairs}${engfs}`;
       }
       else if(game.gameSettings.battle){
         const selectedUnit = game.selectedUnit;
         const battleMode = game.gameSettings.battle.enabled && game.gameSettings.battle.show ? "&playerNumbers=2" : "&playerNumbers=1";
         const baseUrl = `${this.gameSiteHeader}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
-        const newUrl = `${baseUrl}?unit=${selectedUnit}${battleMode}${engfs}`;
-        window.open(newUrl, '_self');
+        newUrl = `${baseUrl}?unit=${selectedUnit}${battleMode}${engfs}`;
       }
       else if(game.gameSettings.isMotionGame){
         const selectedUnit = game.selectedUnit;
         const removalStatus = game.gameSettings.removal.enabled && game.gameSettings.removal.show? "&removal=1" : "";
         const selectedModel = game.gameSettings.model.enabled && game.gameSettings.model.show ? "full" : "lite";
         const baseUrl = `${this.gameSiteHeader}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
-        const newUrl = `${baseUrl}?unit=${selectedUnit}${removalStatus}&model=${selectedModel}${engfs}`;
-        window.open(newUrl, '_self');
+        newUrl = `${baseUrl}?unit=${selectedUnit}${removalStatus}&model=${selectedModel}${engfs}`;
       }
       else if(game.gameSettings.isOldGame){
-        const newUrl = `${this.gameSiteHeader}${game.gameSettings.isOldGame.dirFolder}`;
-        window.open(newUrl, '_self');
+        newUrl = `${this.gameSiteHeader}${game.gameSettings.isOldGame.dirFolder}`;
       }
       else {
         const selectedUnit = game.selectedUnit ? `?unit=${game.selectedUnit}` : "";
         const baseUrl = `${this.gameSiteHeader}/RainbowOne/webapp/2.8/gameFile/OKAGames/${game.gameFolderName}/`;
-        const newUrl = `${baseUrl}${selectedUnit}${engfs}`;
-        window.open(newUrl, '_self');
+        newUrl = `${baseUrl}${selectedUnit}${engfs}`;
       }
+      this.enterToGame(newUrl);
+    },
+    enterToGame(url) {
+      //window.location.replace(url);
+      window.open(url, '_self');
     },
     preventZoom(event) {
       let touchStartTime, lastTouchTime, timeDiff, touches;
@@ -195,18 +195,11 @@ export default {
             // Remove the onbeforeunload event handler if the hidden path is not present
             window.onbeforeunload = null;
           }
-    },
-    handleBackNavigation() {
-      history.pushState(null, document.title, location.pathname + location.search);
-      window.addEventListener('popstate', function () {
-        history.pushState(null, document.title, location.pathname + location.search);
-      });
-    },
+      },
   },
   mounted() {
     this.nodoubletapzoom();
     this.checkCurrectSite();
-    this.handleBackNavigation();
   },
   beforeUnmount() {
     const elements = this.$el.querySelectorAll('.game-card .game-image');

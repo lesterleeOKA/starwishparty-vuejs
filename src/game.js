@@ -618,7 +618,7 @@ export const games = [
     selectedUnit: null,
   },{
     id: 33,
-    show: true,
+    show: false,
     title: "Starwish Game I",
     gameFolderName: "StarwishGame_i",
     image: "image/starwish_game_i.png",
