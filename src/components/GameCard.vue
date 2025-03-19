@@ -118,6 +118,8 @@ export default {
         const baseUrl = `${this.gameSiteHeader}/RainbowOne/webapp/2.8/gameFile/OKAGames/${game.gameFolderName}/`;
         newUrl = `${baseUrl}${selectedUnit}${engfs}`;
       }
+
+      //window.history.replaceState(null, null, window.location.href);
       this.enterToGame(newUrl);
     },
     enterToGame(url) {

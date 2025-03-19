@@ -3,7 +3,6 @@ export const versionLog = [
   {
     version: "Version 1.10 - Page Update (2025/03/18)",
     updates: [
-      "Disable move back next page records",
       "Added g14-Rearrange Together",
       "Added Starwish Game B",
       {
@@ -19,9 +18,22 @@ export const versionLog = [
         ]
       },
       {
-        title: "g3-Spelling",
+        title: "g3-Motion Spelling",
         details: [
             "Adjusted hand cursor tracking function, more accurantly",
+        ]
+      },
+      {
+        title: "g9-Cross The Floor",
+        details: [
+            "Updated new default design",
+            "Updated joystick control method"
+        ]
+      },
+      {
+        title: "g13-Spell Together",
+        details: [
+            "Updated joystick control method"
         ]
       },
       {
