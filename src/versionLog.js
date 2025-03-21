@@ -1,10 +1,11 @@
 // versionLog.js
 export const versionLog = [
   {
-    version: "Version 1.10 - Page Update (2025/03/18)",
+    version: "Version 1.10 - Page Update (2025/03/21)",
     updates: [
       "Added g14-Rearrange Together",
       "Added Starwish Game B",
+      "Added Starwish Game I",
       {
         title: "g1-Matching",
         details: [
@@ -42,6 +43,13 @@ export const versionLog = [
             "Changed joystick controller method",
             "Added center line for blocking oppsite side players go through",
             "Added loading bar of players picking word",
+        ]
+      },
+      {
+        title: "Starwish Game B",
+        details: [
+          "Texture , animations update",
+          "Added game questions and answers"
         ]
       },
     ]

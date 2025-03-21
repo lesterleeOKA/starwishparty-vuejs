@@ -119,12 +119,15 @@ export default {
         newUrl = `${baseUrl}${selectedUnit}${engfs}`;
       }
 
-      //window.history.replaceState(null, null, window.location.href);
-      this.enterToGame(newUrl);
+      this.enterToGame(game.gameRedirect, newUrl);
     },
-    enterToGame(url) {
-      //window.location.replace(url);
-      window.open(url, '_self');
+    enterToGame(redirect=true, url="") {
+      if(redirect){
+        //window.location.replace(url);
+        window.open(url, '_self');
+      }else {
+        this.$router.push({ name: 'Game', query: { url: url } });
+      }
     },
     preventZoom(event) {
       let touchStartTime, lastTouchTime, timeDiff, touches;

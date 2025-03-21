@@ -2,6 +2,7 @@ export const games = [
   {
     id: 1,
     show: true,
+    gameRedirect: true,
     title: "Game 1: Matching",
     gameFolderName: "Matching",
     image: "image/matching_preview.png",
@@ -36,6 +37,7 @@ export const games = [
   {
     id: 2,
     show: true,
+    gameRedirect: true,
     title: "Game 2: Motion Phonics",
     gameFolderName: "Phonics",
     image: "image/screen_mpair.jpg",
@@ -70,6 +72,7 @@ export const games = [
   {
     id: 3,
     show: true,
+    gameRedirect: true,
     title: "Game 3: Spelling",
     gameFolderName: "Snake",
     image: "image/screen_snake.jpg",
@@ -106,6 +109,7 @@ export const games = [
   {
     id: 4,
     show: true,
+    gameRedirect: true,
     title: "Game 4: Typing",
     gameFolderName: "Typing",
     image: "image/screen_type.jpg",
@@ -136,6 +140,7 @@ export const games = [
   {
     id: 5,
     show: true,
+    gameRedirect: true,
     title: "Game 5: Motion Spelling",
     gameFolderName: "MotionSpelling",
     image: "image/screen_mspell.jpg",
@@ -168,6 +173,7 @@ export const games = [
   {
     id: 6,
     show: true,
+    gameRedirect: true,
     title: "Game 6: Fruit Ninja",
     gameFolderName: "FruitNinja",
     image: "image/fruit_ninja.png",
@@ -197,6 +203,7 @@ export const games = [
   {
     id: 7,
     show: true,
+    gameRedirect: true,
     title: "Game 7: Motion Basket",
     gameFolderName: "MotionBasket",
     image: "image/mBasket_preview.png",
@@ -228,6 +235,7 @@ export const games = [
   {
     id: 8,
     show: true,
+    gameRedirect: true,
     title: "Game 8: Head To Win",
     gameFolderName: "HeadToWin",
     image: "image/mhead_preview.png",
@@ -259,6 +267,7 @@ export const games = [
   {
     id: 9,
     show: true,
+    gameRedirect: true,
     title: "Game 9: Cross The Floor",
     gameFolderName: "CrossTheFloor",
     image: "image/crossTheFloor_preview.png",
@@ -290,6 +299,7 @@ export const games = [
   {
     id: 10,
     show: true,
+    gameRedirect: true,
     title: "Game 10: Word Blitz",
     gameFolderName: "WordBlitz",
     image: "image/wordBlitz_preview.png",
@@ -324,6 +334,7 @@ export const games = [
   {
     id: 11,
     show: true,
+    gameRedirect: true,
     title: "Game 11: Bouncing",
     gameFolderName: "Bouncing",
     image: "image/bouncing_preview.png",
@@ -352,6 +363,7 @@ export const games = [
   {
     id: 12,
     show: true,
+    gameRedirect: true,
     title: "Game 12: Jump To Win",
     gameFolderName: "JumpToWin",
     image: "image/jump_to_win_preview.png",
@@ -384,6 +396,7 @@ export const games = [
   {
     id: 13,
     show: true,
+    gameRedirect: true,
     title: "Game 13: Spell Together",
     gameFolderName: "SpellTogether",
     image: "image/spellTogether_preview.png",
@@ -410,6 +423,7 @@ export const games = [
   {
     id: 14,
     show: true,
+    gameRedirect: true,
     title: "Game 14: Rearrange Together",
     gameFolderName: "RearrangeTogether",
     image: "image/RearrangeTogether_preview.png",
@@ -436,6 +450,7 @@ export const games = [
   {
     id: 25,
     show: true,
+    gameRedirect: true,
     title: "Starwish Game A",
     gameFolderName: "StarwishGame_a",
     image: "image/starwish_game_a.png",
@@ -461,6 +476,7 @@ export const games = [
   {
     id: 26,
     show: true,
+    gameRedirect: true,
     title: "Starwish Game B",
     gameFolderName: "StarwishGame_b",
     image: "image/starwish_game_b.png",
@@ -486,6 +502,7 @@ export const games = [
   {
     id: 28,
     show: true,
+    gameRedirect: true,
     title: "Starwish Game D",
     gameFolderName: "StarwishGame_d",
     image: "image/starwish_game_d.png",
@@ -514,6 +531,7 @@ export const games = [
   {
     id: 29,
     show: true,
+    gameRedirect: true,
     title: "Starwish Game E",
     gameFolderName: "StarwishGame_e",
     image: "image/starwish_game_e.png",
@@ -542,6 +560,7 @@ export const games = [
   {
     id: 30,
     show: true,
+    gameRedirect: true,
     title: "Starwish Game F",
     gameFolderName: "StarwishGame_f",
     image: "image/starwish_game_f.png",
@@ -567,6 +586,7 @@ export const games = [
   {
     id: 31,
     show: true,
+    gameRedirect: true,
     title: "Starwish Game G",
     gameFolderName: "StarwishGame_g",
     image: "image/starwish_game_g.png",
@@ -592,6 +612,7 @@ export const games = [
   {
     id: 32,
     show: true,
+    gameRedirect: true,
     title: "Starwish Game H",
     gameFolderName: "StarwishGame_h",
     image: "image/starwish_game_h.png",
@@ -619,6 +640,7 @@ export const games = [
   },{
     id: 33,
     show: true,
+    gameRedirect: true,
     title: "Starwish Game I",
     gameFolderName: "StarwishGame_i",
     image: "image/starwish_game_i.png",
@@ -644,6 +666,7 @@ export const games = [
   {
     id: 34,
     show: true,
+    gameRedirect: true,
     title: "Starwish Game J",
     gameFolderName: "StarwishGame_j",
     image: "image/starwish_game_j.png",
