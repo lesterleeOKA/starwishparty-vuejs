@@ -3,16 +3,18 @@ import { createRouter, createWebHistory, createWebHashHistory  } from 'vue-route
 import LoginPage from './components/LoginPage.vue';
 import Container from './components/Container.vue';
 import GameComponent from './components/GameComponent.vue';
+import Menu from './components/Menu.vue';
 
 const routes = [
+  /*{ path: '/', name: 'Login', component: LoginPage },
+  { path: '/menu', name: 'Menu', component: Menu },
+  { path: '/demo', name: 'DemoPage', component: Container },*/
   { path: '/', name: 'DemoPage', component: Container },
   {
     path: '/game',
     name: 'Game',
     component: GameComponent,
   },
-  /*{ path: '/', name: 'Login', component: LoginPage },
-  { path: '/demo', name: 'DemoPage', component: Container }*/ // Ensure this route exists
 ];
 
 const router = createRouter({

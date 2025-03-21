@@ -54,7 +54,7 @@ export default {
   methods: {
     handleLogin() {
       console.log('Successful login with:', this.email, this.password, this.rememberMe);
-      this.$router.push({ name: 'DemoPage' });
+      this.$router.push({ name: 'Menu' });
       // Implement actual login logic here
     }
   }
