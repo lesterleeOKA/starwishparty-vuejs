@@ -54,10 +54,16 @@ export default {
   methods: {
     handleLogin() {
       console.log('Successful login with:', this.email, this.password, this.rememberMe);
+
+      // Example avatar URL; replace with actual data from the login response
+      const avatarUrl = "";
+
+      // Use this.$parent.$refs if Background is a parent,
+      this.$emit('login', avatarUrl); // Emit an event that will be caught by the parent or layout
       this.$router.push({ name: 'Menu' });
       // Implement actual login logic here
     }
-  }
+  },
 };
 </script>
 

@@ -161,46 +161,17 @@ export default {
       }
       else if(this.currentSiteHeader.includes(import.meta.env.VITE_BASE_DEV_HEADER)){
         document.title = "Starwish Party (Dev)";
-        this.configCSPMeta();
         console.log("current site is development");
         this.gameSiteHeader = `${import.meta.env.VITE_BASE_DEV_HEADER}`
       }
       else if(this.currentSiteHeader.includes(import.meta.env.VITE_BASE_PROD_GAME_DOMAIN) ||
       this.currentSiteHeader.includes(import.meta.env.VITE_BASE_PROD_HEADER)){
         document.title = "Starwish Party";
-        this.configCSPMeta();
         console.log("current site is production");
         this.gameSiteHeader = `${import.meta.env.VITE_BASE_PROD_HEADER}`
         this.hideURLPath();
       }
-    },
-    configCSPMeta(){
-      const cspMeta = document.getElementById('csp-meta');
-      cspMeta.setAttribute('http-equiv', 'Content-Security-Policy');
-      cspMeta.setAttribute('content', "default-src 'self'; img-src 'self' data:;");
-    },
-    hideURLPath() {
-          const hiddenPath = import.meta.env.VITE_BASE_HIDDEN_PATH;
-          // Check if the current URL includes the hidden path
-          if (this.currentSiteUrl.includes(hiddenPath)) {
-            // Store the original URL
-            const originalURL = window.location.href;
-            // Update the URL to the base URL
-            window.history.replaceState(null, null, this.currentSiteHeader);
-
-            // Set up the onbeforeunload event handler
-            window.onbeforeunload = () => {
-              // Check if the original URL is available
-              if (originalURL) {
-                // Navigate back to the original URL
-                window.location.href = originalURL;
-              }
-            };
-          } else {
-            // Remove the onbeforeunload event handler if the hidden path is not present
-            window.onbeforeunload = null;
-          }
-      },
+    }
   },
   mounted() {
     this.nodoubletapzoom();
