@@ -6,10 +6,10 @@ import GameComponent from './components/GameComponent.vue';
 import Menu from './components/Menu.vue';
 
 const routes = [
-  { path: '/', name: 'Login', component: LoginPage },
+  /*{ path: '/', name: 'Login', component: LoginPage },
   { path: '/menu', name: 'Menu', component: Menu },
-  { path: '/demo', name: 'DemoPage', component: Container },
-  /*{ path: '/', name: 'DemoPage', component: Container },*/
+  { path: '/demo', name: 'DemoPage', component: Container },*/
+  { path: '/', name: 'DemoPage', component: Container },
   {
     path: '/game',
     name: 'Game',
