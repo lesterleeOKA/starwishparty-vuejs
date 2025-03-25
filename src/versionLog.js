@@ -1,7 +1,7 @@
 // versionLog.js
 export const versionLog = [
   {
-    version: "Version 1.10 - Page Update (2025/03/21)",
+    version: "Version 1.10 - Page Update (2025/03/25)",
     updates: [
       "Added g14-Rearrange Together",
       "Added Starwish Game B",
@@ -29,6 +29,14 @@ export const versionLog = [
         details: [
             "Updated new default design",
             "Updated joystick control method"
+        ]
+      },
+      {
+        title: "g12-Jump To Win",
+        details: [
+            "Changed default character no.2's cloth",
+            "Added players' no besides the character",
+            "Added player number settings (default 3 players)"
         ]
       },
       {

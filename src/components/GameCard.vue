@@ -20,6 +20,13 @@
           </label>
       </div>
 
+      <div v-if="game.gameSettings.playersNumber" class="game-controls">
+        <h1>Player Numbers:</h1>
+         <select v-model="game.gameSettings.playersNumber.selectedPlayers" style="overflow-y:auto;flex: 0 0 30%;">
+          <option v-for="num in game.gameSettings.playersNumber.players" :value="num" :key="num">{{ num }}</option>
+        </select>
+      </div>
+
       <div v-if="game.selectedEngfs" class="game-controls">
         <h1>Objects Font Size:</h1>
         <select v-model="game.selectedEngfs" style="overflow-y:auto;flex: 0 0 30%;">
@@ -96,6 +103,13 @@ export default {
         const selectedPairs = game.selectedPair;
         const baseUrl = `${this.gameSiteHeader}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
         newUrl = `${baseUrl}?unit=${selectedUnit}&pairs=${selectedPairs}${engfs}`;
+      }
+      else if(game.gameSettings.playersNumber){
+        const selectedUnit = game.selectedUnit;
+        const selectedPlayers = game.gameSettings.playersNumber.selectedPlayers;
+        const playerNumbers = game.gameSettings.playersNumber.enabled && game.gameSettings.playersNumber.show ? `&playerNumbers=${selectedPlayers}` : "&playerNumbers=3";
+        const baseUrl = `${this.gameSiteHeader}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
+        newUrl = `${baseUrl}?unit=${selectedUnit}${playerNumbers}${engfs}`;
       }
       else if(game.gameSettings.battle){
         const selectedUnit = game.selectedUnit;

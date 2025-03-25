@@ -370,6 +370,12 @@ export const games = [
     hasPairs: false,
     gameSettings: {
       isMotionGame: false,
+      playersNumber: {
+        enabled: true,
+        show: true,
+        players: [1, 2, 3],
+        selectedPlayers: 3,
+      },
       removal: {
         enabled: false,
         show: false
