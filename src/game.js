@@ -452,6 +452,33 @@ export const games = [
     selectedPair: null,
     selectedUnit: "p1u8-i",
   },
+  {
+    id: 15,
+    show: true,
+    gameRedirect: true,
+    title: "Game 15: Co-Clamp To Win",
+    gameFolderName: "CoClampToWin",
+    image: "image/coClampToWin_preview.png",
+    hasPairs: false,
+    gameSettings: {
+      isMotionGame: false,
+      removal: {
+        enabled: false,
+        show: false
+      },
+      model: {
+        enabled: false,
+        show: false
+      }
+    },
+    pairs: null,
+    units: [
+      { value: "p1u1-a", label: "P1U1-Game A (Listening)" },
+      { value: "p1u5-e", label: "P1U5-Game E (Text)" },
+    ],
+    selectedPair: null,
+    selectedUnit: "p1u1-a",
+  },
   //小王子系列///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   {
     id: 25,
