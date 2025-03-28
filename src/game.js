@@ -154,6 +154,12 @@ export const games = [
       model: {
         enabled: true,
         show: true
+      },
+      gameMode: {
+        enabled: false,
+        show: true,
+        name: "Ninja Mode:",
+        param: "gameMode"
       }
     },
     pairs: null,
@@ -534,7 +540,7 @@ export const games = [
   },
   {
     id: 27,
-    show: true,
+    show: false,
     gameRedirect: true,
     title: "Starwish Game C",
     gameFolderName: "StarwishGame_c",

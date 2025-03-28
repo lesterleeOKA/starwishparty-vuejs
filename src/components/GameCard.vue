@@ -50,6 +50,14 @@
           </label>
       </div>
 
+      <div v-if="game.gameSettings.gameMode && game.gameSettings.gameMode.show" class="game-controls">
+          <h1>{{ game.gameSettings.gameMode.name}}</h1>
+          <label class="switch">
+            <input type="checkbox" v-model="game.gameSettings.gameMode.enabled">
+            <span class="slider"></span>
+          </label>
+      </div>
+
       <div class="game-controls">
         <select v-model="game.selectedUnit" style="overflow-y:auto;">
           <option v-for="unit in filteredUnits(game.units)" :value="unit.value" :key="unit.value">{{ unit.label }}</option>
@@ -86,7 +94,7 @@ export default {
       if (this.selectedLevel === 'None') return units;
       return units.filter(unit => unit.value && unit.value.startsWith(this.selectedLevel));
     },
-    playGame(game, event) {
+    /*playGame(game, event) {
       const target = event.currentTarget;
       if (target.disabled) return;
 
@@ -121,8 +129,9 @@ export default {
         const selectedUnit = game.selectedUnit;
         const removalStatus = game.gameSettings.removal.enabled && game.gameSettings.removal.show? "&removal=1" : "";
         const selectedModel = game.gameSettings.model.enabled && game.gameSettings.model.show ? "full" : "lite";
+        const gameMode = game.gameSettings.gameMode ? game.gameSettings.gameMode.enabled && game.gameSettings.gameMode.show ? `&${game.gameSettings.gameMode.param}=1` : "" : "";
         const baseUrl = `${this.gameSiteHeader}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
-        newUrl = `${baseUrl}?unit=${selectedUnit}${removalStatus}&model=${selectedModel}${engfs}`;
+        newUrl = `${baseUrl}?unit=${selectedUnit}${removalStatus}&model=${selectedModel}${engfs}${gameMode}`;
       }
       else if(game.gameSettings.isOldGame){
         newUrl = `${this.gameSiteHeader}${game.gameSettings.isOldGame.dirFolder}`;
@@ -134,6 +143,60 @@ export default {
       }
 
       this.enterToGame(game.gameRedirect, newUrl);
+    },*/
+
+    playGame(game, event) {
+        const target = event.currentTarget;
+        if (target.disabled) return;
+
+        // Disable the button for 1 second
+        target.disabled = true;
+        setTimeout(() => {
+            target.disabled = false;
+        }, 1000);
+
+        const params = new URLSearchParams();
+
+        if (game.selectedUnit) {
+            params.append('unit', game.selectedUnit);
+        }
+        if (game.selectedEngfs) {
+            params.append('engfs', game.selectedEngfs);
+        }
+        if (game.hasPairs) {
+            params.append('pairs', game.selectedPair);
+        }
+        if (game.gameSettings.playersNumber) {
+            const selectedPlayers = game.gameSettings.playersNumber.selectedPlayers;
+            const playerNumbers = game.gameSettings.playersNumber.enabled && game.gameSettings.playersNumber.show ? selectedPlayers : 3;
+            params.append('playerNumbers', playerNumbers);
+        }
+        if (game.gameSettings.battle) {
+            const battleMode = game.gameSettings.battle.enabled && game.gameSettings.battle.show ? 2 : 1;
+            params.append('playerNumbers', battleMode);
+        }
+        if (game.gameSettings.isMotionGame) {
+            if (game.gameSettings.removal.enabled && game.gameSettings.removal.show) {
+                params.append('removal', 1);
+            }
+            const selectedModel = game.gameSettings.model.enabled && game.gameSettings.model.show ? 'full' : 'lite';
+            params.append('model', selectedModel);
+
+            if (game.gameSettings.gameMode && game.gameSettings.gameMode.enabled && game.gameSettings.gameMode.show) {
+                params.append(game.gameSettings.gameMode.param, 1);
+            }
+        }
+
+        let newUrl;
+        if (game.gameSettings.isOldGame) {
+            newUrl = `${this.gameSiteHeader}${game.gameSettings.isOldGame.dirFolder}`;
+        } else {
+            const baseUrl = `${this.gameSiteHeader}${import.meta.env.VITE_RAINBOWONE_GAMES_DIRPATH}${game.gameFolderName}/`;
+            const queryString = params.toString();
+            newUrl = queryString ? `${baseUrl}?${queryString}` : baseUrl;
+        }
+
+        this.enterToGame(game.gameRedirect, newUrl);
     },
     enterToGame(redirect=true, url="") {
       if(redirect){
