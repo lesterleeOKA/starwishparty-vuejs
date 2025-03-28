@@ -1,10 +1,10 @@
 // versionLog.js
 export const versionLog = [
   {
-    version: "Version 1.10 - Page Update (2025/03/27)",
+    version: "Version 1.10 - Page Update (2025/03/28)",
     updates: [
       "Added g14-Rearrange Together",
-      "Added g15-Co-Clamp To Win (Testing)",
+      "Added g15-Co-Clamp To Win",
       "Added Starwish Game B",
       "Added Starwish Game I",
       {
@@ -23,6 +23,7 @@ export const versionLog = [
         title: "g3-Motion Spelling",
         details: [
             "Adjusted hand cursor tracking function, more accurantly",
+            "Merge with fruit ninja to the game, added switch to change game mode"
         ]
       },
       {
