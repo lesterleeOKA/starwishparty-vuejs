@@ -540,7 +540,7 @@ export const games = [
   },
   {
     id: 27,
-    show: false,
+    show: true,
     gameRedirect: true,
     title: "Starwish Game C",
     gameFolderName: "StarwishGame_c",
