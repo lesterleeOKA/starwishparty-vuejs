@@ -44,10 +44,10 @@ export default {
     checkLoginStatus() {
       this.isLogined = localStorage.getItem('isLogined') === 'true'; // Retrieve from local storage
     },
-    configCSPMeta(){
+    configCSPMeta() {
       const cspMeta = document.getElementById('csp-meta');
       cspMeta.setAttribute('http-equiv', 'Content-Security-Policy');
-      cspMeta.setAttribute('content', "default-src 'self'; img-src 'self' data:;");
+      cspMeta.setAttribute('content', "default-src 'self'; img-src 'self' data:; style-src 'self' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com;");
     },
     hideURLPath() {
           const hiddenPath = import.meta.env.VITE_BASE_HIDDEN_PATH;

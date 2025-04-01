@@ -1,7 +1,7 @@
 // versionLog.js
 export const versionLog = [
   {
-    version: "Version 1.10 - Page Update (2025/03/28)",
+    version: "Version 1.10 - Page Update (2025/04/01)",
     updates: [
       "Added g14-Rearrange Together",
       "Added g15-Co-Clamp To Win",
