@@ -95,6 +95,7 @@ export const games = [
       { value: "p1u3-d", label: "P1U3-Game D (Listening)" },
       { value: "p1u5-d", label: "P1U5-Game D (Listening)" },
       { value: "p1u6-d", label: "P1U6-Game D (Picture)" },
+      { value: "p2u1-b", label: "P2U1-Game B (Picuure)"},
       { value: "p2u2-b", label: "P2U2-Game B (Picture)" },
       { value: "p2u3-d", label: "P2U3-Game D (Listening)" },
       { value: "p2u4-d", label: "P2U4-Game D (Listening)" },
