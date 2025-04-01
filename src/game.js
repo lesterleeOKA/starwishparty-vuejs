@@ -95,13 +95,13 @@ export const games = [
       { value: "p1u3-d", label: "P1U3-Game D (Listening)" },
       { value: "p1u5-d", label: "P1U5-Game D (Listening)" },
       { value: "p1u6-d", label: "P1U6-Game D (Picture)" },
-      { value: "p2u2-b", label: "p2u2-Game B (Picture)" },
-      { value: "p2u3-d", label: "p2u3-Game D (Listening)" },
-      { value: "p2u4-d", label: "p2u4-Game D (Listening)" },
-      { value: "p2u5-d", label: "p2u5-Game D (Listening)" },
-      { value: "p2u6-d", label: "p2u6-Game D (Listening)" },
-      { value: "p3u1-c", label: "p3u1-Game C (Listening)" },
-      { value: "p3u3-c", label: "p3u3-Game C (Listening)" }
+      { value: "p2u2-b", label: "P2U2-Game B (Picture)" },
+      { value: "p2u3-d", label: "P2U3-Game D (Listening)" },
+      { value: "p2u4-d", label: "P2U4-Game D (Listening)" },
+      { value: "p2u5-d", label: "P2U5-Game D (Listening)" },
+      { value: "p2u6-d", label: "P2U6-Game D (Listening)" },
+      { value: "p3u1-c", label: "P3U1-Game C (Listening)" },
+      { value: "p3u3-c", label: "P3U3-Game C (Listening)" }
     ],
     selectedPair: null,
     selectedUnit: "p1u1-d",
@@ -332,6 +332,11 @@ export const games = [
       { value: "p1u6-e", label: "P1U6-Game E (FillInBlank)" },
       { value: "p2u1-c", label: "P2U1-Game C (Listening)" },
       { value: "p2u2-c", label: "P2U2-Game C (Listening)" },
+      { value: "p2u4-c", label: "P2U4-Game C (Listening)" },
+      { value: "p3Bu1-d", label: "P3Bu1-Game D (FillInBlank)" },
+      { value: "p3Bu3-d", label: "P3Bu3-Game D (FillInBlank)" },
+      { value: "p3Bu4-d", label: "P3Bu4-Game D (FillInBlank)" },
+      { value: "p5u3-d", label: "P5U3-Game D (Text)" }
       /*{ value: "p3u1-d", label: "P3U1-Game D (Listening)" }*/
     ],
     selectedPair: null,

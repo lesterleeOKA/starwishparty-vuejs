@@ -34,6 +34,12 @@ export const versionLog = [
         ]
       },
       {
+        title: "g10-Word Blitz",
+        details: [
+          "added question units: p2u4-c, p3Bu1-d, p3Bu3-d, p4Bu4-d, p5u3-d"
+        ]
+      },
+      {
         title: "g12-Jump To Win",
         details: [
             "Changed default character no.2's cloth",
