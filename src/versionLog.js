@@ -1,7 +1,7 @@
 // versionLog.js
 export const versionLog = [
   {
-    version: "Version 1.10 - Page Update (2025/04/01)",
+    version: "Version 1.10 - Page Update (2025/04/02)",
     updates: [
       "Added g14-Rearrange Together",
       "Added g15-Co-Clamp To Win",
@@ -59,6 +59,12 @@ export const versionLog = [
             "Changed joystick controller method",
             "Added center line for blocking oppsite side players go through",
             "Added loading bar of players picking word",
+        ]
+      },
+      {
+        title: "g15-Co-Clamp To Win",
+        details: [
+            "Updated new design",
         ]
       },
       {
