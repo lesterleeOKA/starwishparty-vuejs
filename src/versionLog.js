@@ -1,12 +1,13 @@
 // versionLog.js
 export const versionLog = [
   {
-    version: "Version 1.10 - Page Update (2025/04/02)",
+    version: "Version 1.10 - Page Update (2025/04/08)",
     updates: [
       "Added g14-Rearrange Together",
       "Added g15-Co-Clamp To Win",
       "Added Starwish Game B",
       "Added Starwish Game I",
+      "Changed Game 6- Fruit Ninja to new motion game Stay To Eat ",
       {
         title: "g1-Matching",
         details: [

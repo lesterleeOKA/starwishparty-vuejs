@@ -181,6 +181,36 @@ export const games = [
     id: 6,
     show: true,
     gameRedirect: true,
+    title: "Game 6: Stay To Eat",
+    gameFolderName: "StayToEat",
+    image: "image/stayToEat_preview.png",
+    hasPairs: false,
+    gameSettings: {
+      isMotionGame: true,
+      removal: {
+        enabled: false,
+        show: true
+      },
+      model: {
+        enabled: true,
+        show: true
+      }
+    },
+    pairs: null,
+    engfs: [25, 30, 35, 40, 45, 50, 55],
+    selectedEngfs: 30,
+    units: [
+      { value: "p1u1-e", label: "P1U1-Game E (FillInBlank)" },
+      { value: "p1u2-a", label: "P1U2-Game A (Listening)" },
+      { value: "p2u3-e", label: "P2U3-Game E (Text)" }
+    ],
+    selectedPair: null,
+    selectedUnit: "p1u1-e",
+  },
+  /*{
+    id: 6,
+    show: true,
+    gameRedirect: true,
     title: "Game 6: Fruit Ninja",
     gameFolderName: "FruitNinja",
     image: "image/fruit_ninja.png",
@@ -206,7 +236,7 @@ export const games = [
     ],
     selectedPair: null,
     selectedUnit: "p1u1-e",
-  },
+  }, */
   {
     id: 7,
     show: true,
