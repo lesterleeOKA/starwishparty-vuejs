@@ -1,5 +1,5 @@
 <template>
-  <div class="starwish-party-container">
+  <div class="starwish-party-container" v-if="!showIframe">
     <div class="starwish-party">
       <div class="logo"></div>
       <div class="note">
@@ -20,16 +20,16 @@
 
       <!--games-->
       <div class="game-container">
-        <Games :visibleGames="visibleGames" :selectedLevel="selectedLevel"/>
+        <Games :visibleGames="visibleGames" :selectedLevel="selectedLevel" @showIframe="handleShowIframe"/>
       </div>
     </div>
   </div>
-  <div class="version-container">
+  <div class="version-container" v-if="!showIframe">
     <div class="version-text">Ver 1.10</div>
     <button class="history-button" @click="openHistoryPage">History</button>
   </div>
 
-  <div class="historyPage" id="history" v-if="isHistoryVisible">
+  <div class="historyPage" id="history" v-if="!showIframe && isHistoryVisible" >
     <div class="history-content">
       <h4>Update History</h4>
       <span class="close-button" @click="closeHistoryPage">&times;</span>
@@ -53,18 +53,20 @@
       </div>
     </div>
   </div>
-
+  <GameIframe v-if="showIframe" :url="gameUrl" />
 </template>
 
 <script>
 import Games from './GameCard.vue'
+import GameIframe from './GameIframe.vue';
 import { games } from '../game.js';
 import { versionLog } from '../versionLog.js';
 
 export default {
   name: "Container",
   components: {
-    Games
+    Games,
+    GameIframe
   },
   data() {
     return {
@@ -74,9 +76,25 @@ export default {
       selectedLevel: 'None',
       isHistoryVisible: false,
       historyVersions: [],
+      showIframe: false,
+      gameUrl: ''
     };
   },
   methods: {
+    handleShowIframe(show, url) {
+      this.showIframe = show;
+      this.gameUrl = url;
+    },
+    handleMessage(event) {
+      console.log(event.data);
+      if (event.data === "closeIframe") {
+          this.closeIframe();
+      }
+    },
+    closeIframe() {
+      this.showIframe = false;
+      this.gameUr = '';
+    },
     filterGames(level) {
       if (level === 'None') {
         this.visibleGames = this.games.filter(game => game.show);
@@ -108,6 +126,12 @@ export default {
       this.historyVersions = versionLog;
     }
   },
+  mounted() {
+    window.addEventListener("message", this.handleMessage);
+  },
+  beforeDestroy() {
+    window.removeEventListener("message", this.handleMessage);
+  }
 }
 </script>
 

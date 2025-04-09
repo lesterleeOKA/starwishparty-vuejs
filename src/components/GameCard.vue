@@ -203,7 +203,8 @@ export default {
         //window.location.replace(url);
         window.open(url, '_self');
       }else {
-        this.$router.push({ name: 'Game', query: { url: url } });
+        //this.$router.push({ name: 'Game', query: { url: url } });
+        this.$emit('showIframe', true, url);
       }
     },
     preventZoom(event) {
@@ -259,7 +260,7 @@ export default {
     for (let i = 0; i < elements.length; i++) {
       elements[i].removeEventListener('touchstart', this.preventZoom);
     }
-  },
+  }
 }
 </script>
 <style scoped>
@@ -283,7 +284,7 @@ export default {
     display: flex;
     flex-direction: column;
     touch-action: manipulation;
-    height: calc(min(30vw, 30vw));
+    height: calc(min(33vw, 33vw));
   }
   .game-card .game-image {
     border-radius: calc(min(2vh, 2vw));

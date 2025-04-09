@@ -1,8 +1,9 @@
 // versionLog.js
 export const versionLog = [
   {
-    version: "Version 1.10 - Page Update (2025/04/08)",
+    version: "Version 1.10 - Page Update (2025/04/09)",
     updates: [
+      "Added iframe contain gameUrl link, now will not show the gameUrl link",
       "Added g14-Rearrange Together",
       "Added g15-Co-Clamp To Win",
       "Added Starwish Game B",

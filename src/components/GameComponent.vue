@@ -25,7 +25,7 @@ export default {
   },
   mounted() {
     this.gameUrl = this.$route.query.url;
-    window.location.replace(this.gameUrl);
+    //window.location.replace(this.gameUrl);
     //console.log(this.gameUrl);
     /*nextTick(() => {
       this.enterFullScreen();
